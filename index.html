@@ -65,7 +65,9 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.55; }
-.wrap { max-width: 720px; margin: 0 auto; padding-inline: 18px; padding-block: 0 56px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 48px); padding-block: 0 56px; }
+[hidden] { display: none !important; }
+p, dd, li { max-width: 70ch; }
 h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
 p { margin: 0; }
 a { color: var(--accent); text-underline-offset: 3px; }
@@ -239,6 +241,32 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
 .coffee:hover { background: var(--marker); color: var(--marker-ink); }
 .coffee svg { color: var(--marker); }
 .coffee:hover svg { color: var(--marker-ink); }
+/* wide screens: use the space instead of one narrow column (phones keep the single column) */
+@media (min-width: 980px) {
+  /* home: intro on the left stays in view, the checker on the right */
+  .view[data-view="home"]:not([hidden]) { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); column-gap: 56px; align-items: start; padding-top: 24px; }
+  .view[data-view="home"] .hero { grid-column: 1; grid-row: 1; position: sticky; top: 24px; padding-block: 24px 0; }
+  .view[data-view="home"] .tool { grid-column: 2; grid-row: 1 / span 2; margin-top: 24px; }
+  .view[data-view="home"] .home-more { grid-column: 1; grid-row: 2; }
+  .trust { grid-template-columns: minmax(0, 1fr); }
+  /* how to claim: steps as a grid of cards */
+  .guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border-left: 0; margin-left: 0; }
+  .g-step { padding: 56px 22px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+  .g-step::before { left: 22px; top: 18px; }
+  dl.gloss { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
+  .faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  /* other money: two columns of choices and results */
+  #otherOpts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .other-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .other-list > h2 { grid-column: 1 / -1; }
+  /* privacy: topic on the left, explanation on the right */
+  .privacy { display: grid; grid-template-columns: 220px minmax(0, 1fr); column-gap: 40px; row-gap: 18px; }
+  .privacy h3 { padding-top: 2px; }
+  /* feedback: form and sharing side by side */
+  #feedback { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); column-gap: 24px; align-items: start; }
+  #feedback > h1, #feedback > .caveat { grid-column: 1 / -1; }
+  .page-h { font-size: 52px; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .bar > span, .opt { transition: none; } }
 </style>
 <script>
