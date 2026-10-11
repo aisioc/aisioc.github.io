@@ -13,7 +13,7 @@
 <meta property="og:title" content="Aisíoc: get the tax back you're owed">
 <meta property="og:description" content="Free and private. Answer a few quick questions and see which Irish tax credits you're missing, like the rent credit and medical expenses, and how to claim them yourself.">
 <meta property="og:url" content="https://aisioc.github.io/">
-<meta property="og:image" content="https://aisioc.github.io/og-image.png">
+<meta property="og:image" content="https://aisioc.github.io/og-image-v2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Aisíoc. Get the tax back you're owed. Free, 2 minutes, no sign-up, nothing saved.">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Aisíoc: get the tax back you're owed">
 <meta name="twitter:description" content="Free and private. Answer a few quick questions and see which Irish tax credits you're missing, like the rent credit and medical expenses, and how to claim them yourself.">
-<meta name="twitter:image" content="https://aisioc.github.io/og-image.png">
+<meta name="twitter:image" content="https://aisioc.github.io/og-image-v2.png">
 <script data-goatcounter="https://aisioc.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <title>Aisíoc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -190,6 +190,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 .support h2 { font-size: 22px; }
 .support-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .fine { font-size: 14px; color: var(--muted); }
+.madein { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--ink); }
 .copied { font-size: 14px; color: var(--accent); font-weight: 600; }
 .eyebrow { font-size: 14px; letter-spacing: .4px; color: var(--muted); }
 .eyebrow i { font-style: normal; font-family: var(--font-mono); font-size: 13px; }
@@ -224,7 +225,6 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       <nav class="topnav" aria-label="Page sections">
         <a href="#" data-nav="home">Check</a>
         <a href="#how" data-nav="how">How to claim</a>
-        <a href="#about" data-nav="about">About</a>
         <a href="#privacy" data-nav="privacy">Privacy</a>
         <a href="#feedback" data-nav="feedback">Feedback</a>
       </nav>
@@ -310,21 +310,6 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 
   </div>
 
-  <div class="view" data-view="about" hidden>
-  <section class="block" id="about">
-    <h1 class="page-h" id="h-about" tabindex="-1">About</h1>
-    <div class="about">
-      <p>Hi guys, thanks for visiting my website. I hope you find it useful.</p>
-      <p>My name is Karol. I studied software development for four years at WIT (Waterford Institute of Technology), which is now part of SETU.</p>
-      <p>The whole process of claiming tax back never made sense to me, and over the years I picked up pointers here and there from work colleagues. Just two weeks ago, a colleague showed me how to claim back the rent I've been paying over the last few years. I knew it was something you could do, but I didn't know how.</p>
-      <p>So I decided to build this website to help others get their money back. I researched different sectors to see what people in different jobs can claim. I've tried my best to make it as accurate as possible, but if you spot any mistakes, please let me know using the <a href="#feedback">feedback form</a>.</p>
-      <p>Thanks again for checking out the site. I hope it helped. Share it with your mates: you don't need a third party to claim your tax back for you. You can do it yourself and keep all your hard-earned cash.</p>
-      <p class="signoff">Sláinte,<br>Karol</p>
-    </div>
-  </section>
-
-  </div>
-
   <div class="view" data-view="privacy" hidden>
   <section class="block" id="privacy">
     <h1 class="page-h" id="h-privacy" tabindex="-1">Privacy</h1>
@@ -358,7 +343,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
         </div>
       </fieldset>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <label for="fbText">What should we fix or add? Spotted a mistake?</label>
+        <label for="fbText">What did we miss? What can we improve?</label>
         <textarea id="fbText" maxlength="1500" placeholder="For example: a question was confusing, a step didn't match what you saw in myAccount, or a credit is missing."></textarea>
         <p class="hint">Don't include your PPS number, name or other personal details.</p>
       </div>
@@ -380,6 +365,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       </div>
       <p class="copied" id="shareStatus" role="status"></p>
     </div>
+    <p class="madein">Made in Ireland by some eejit who couldn't figure out how to reclaim rent tax.</p>
     <p class="fine">This is a free guide, not tax advice. We're not connected to Revenue. Information comes from Revenue.ie and was last checked on 11 October 2026. Revenue's own pages are the final word, and every credit has conditions we can only summarise here.</p>
   </footer>
 </div>
@@ -803,7 +789,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
   });
 
   // pages: each menu item shows one page; the address keeps a plain #name so back/forward work
-  var VIEWS = { home: 'Aisíoc', how: 'How to claim · Aisíoc', about: 'About · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
+  var VIEWS = { home: 'Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
   function showView(first) {
     var name = (location.hash || '').replace('#', '');
     if (name === 'words') name = 'how';
