@@ -203,6 +203,35 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 .jump button:last-child { border-bottom: none; }
 .jump button:hover { background: var(--accent-soft); }
 .jump span.w { color: var(--muted); font-size: 15px; text-align: right; }
+/* refund estimators */
+details.est { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 16px; min-height: 28px; }
+.est-body { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.est-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; }
+.field input, .field select { height: 46px; padding: 0 12px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; width: 100%; }
+.field input:focus, .field select:focus { border-color: var(--accent); outline: none; }
+.check { display: flex; gap: 10px; align-items: center; font-size: 15px; min-height: 32px; }
+.check input { width: 20px; height: 20px; accent-color: var(--accent); }
+.est-out { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.est-note { font-size: 14px; color: var(--muted); }
+/* results actions */
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.actions .btn { display: inline-flex; align-items: center; gap: 8px; }
+.copybox { width: 100%; min-height: 160px; padding: 12px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); font: 14px/1.5 var(--font-mono); }
+/* FAQ */
+.faq { display: flex; flex-direction: column; gap: 10px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 17px; min-height: 28px; }
+.faq details > div { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; color: var(--muted); }
+/* other money */
+.support-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.support-card h3 { font-size: 21px; font-weight: 600; }
+.support-card dl { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.support-card dt { font-size: 13px; color: var(--muted); letter-spacing: .6px; text-transform: uppercase; font-weight: 700; }
+.support-card dd { margin: 2px 0 0; color: var(--ink); }
+.other-list { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }
 .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; }
 .theme-btn:hover { border-color: var(--accent); }
 .top-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -224,6 +253,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
     <div class="top-right">
       <nav class="topnav" aria-label="Page sections">
         <a href="#" data-nav="home">Check</a>
+        <a href="#other" data-nav="other">Other money</a>
         <a href="#how" data-nav="how">How to claim</a>
         <a href="#privacy" data-nav="privacy">Privacy</a>
         <a href="#feedback" data-nav="feedback">Feedback</a>
@@ -308,6 +338,63 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
     </dl>
   </section>
 
+  <section class="block" id="faq">
+    <h2>Common questions</h2>
+    <div class="faq">
+      <details>
+        <summary>What if Revenue says I underpaid tax?</summary>
+        <div>
+          <p>When you open a past year, your Statement of Liability can occasionally show you paid too little, for example because of a second job or a taxable social welfare payment. Adding the credits you're owed can reduce or cancel it out.</p>
+          <p>If you still owe under €6,000, you can pay it in myAccount, or let Revenue collect it interest-free by reducing your tax credits over up to four years. Over €6,000, Revenue sends a notice and you can contact them through MyEnquiries to agree how to pay.</p>
+          <p><a href="https://www.revenue.ie/en/jobs-and-pensions/end-of-year-process/underpayment-position.aspx" target="_blank" rel="noopener">What to do if you have underpaid (Revenue.ie)</a></p>
+        </div>
+      </details>
+      <details>
+        <summary>Will claiming get me audited?</summary>
+        <div>
+          <p>Claiming credits you're entitled to is completely normal, and hundreds of thousands of people do it every year. Revenue does check some claims and may ask to see your receipts, so keep them for six years. As long as you only claim what you actually paid for, there's nothing to worry about.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Do I need my landlord's permission to claim the rent credit?</summary>
+        <div>
+          <p>No. You claim it yourself, and you don't need your landlord to do anything. You'll be asked for their name, the address and how much rent you paid. The one condition is that you're renting with the landlord's agreement, so an unofficial sublet doesn't count.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What if my landlord hasn't registered with the RTB?</summary>
+        <div>
+          <p>You can still claim without an RTB number, but Revenue may ask for it later and could take the credit back if you can't give it. Some types of tenancy, such as student accommodation from colleges and private providers, must be registered or you can't claim. Rooms in someone's home (rent-a-room or digs) don't need to be registered and still count.</p>
+          <p><a href="https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/land-and-property/rent-credit/qualifying-conditions.aspx" target="_blank" rel="noopener">Rent Tax Credit conditions (Revenue.ie)</a></p>
+        </div>
+      </details>
+      <details>
+        <summary>I've left Ireland. Can I still claim?</summary>
+        <div>
+          <p>Yes. If you worked here for part of the year before moving abroad, you may be due a refund. In myAccount, go to <b>PAYE Services</b> and choose <b>Claim unemployment repayment</b>. Credits for past years are claimed the usual way, through <b>Review your tax for the previous 4 years</b>.</p>
+          <p>Not online? Send Form P50, a Form 12, and a short statement that you've moved abroad permanently (or won't be Irish resident next tax year) to your Revenue office.</p>
+          <p><a href="https://www.revenue.ie/en/life-events-and-personal-circumstances/moving-to-or-from-ireland/leaving-ireland/are-you-entitled-to-a-refund-of-tax.aspx" target="_blank" rel="noopener">Refunds when leaving Ireland (Revenue.ie)</a></p>
+        </div>
+      </details>
+      <details>
+        <summary>Do I have to pay someone to do this?</summary>
+        <div>
+          <p>No. myAccount is free, and every claim on this site can be done yourself. Tax refund agents usually take a cut of your refund for the same steps.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  </div>
+
+  <div class="view" data-view="other" hidden>
+  <section class="block">
+    <h1 class="page-h" id="h-other" tabindex="-1">Other money you might be missing</h1>
+    <p class="caveat">Not tax, but help with everyday costs that lots of people don't know they can get. Tick anything that applies to you or your household. Nothing is saved.</p>
+    <div class="options" id="otherOpts" role="group" aria-label="Your situation"></div>
+    <div id="otherResults" aria-live="polite"></div>
+    <p class="fine">Figures are 2026 rates from Citizens Information and gov.ie, last checked on 11 October 2026. Not sure if you qualify? Call Citizens Information on 0818 07 4000 (Monday to Friday, 9am to 8pm). It's free.</p>
+  </section>
   </div>
 
   <div class="view" data-view="privacy" hidden>
@@ -554,7 +641,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       }).join(' ') + ' You get back 20% of the rent you paid, up to those limits.';
       var need = ['Your landlord’s name and the property address', 'How much rent you paid in each year', 'The RTB registration number, if you have it (you can claim without it, but Revenue may ask later)'];
       if (rent.indexOf('child') > -1) need.push('For your child: the college and course name');
-      out.push({ id: 'rent', title: 'Rent Tax Credit', short: 'Up to ' + eur(rg[0].amt) + ' a year',
+      out.push({ id: 'rent', est: 'rent', title: 'Rent Tax Credit', short: 'Up to ' + eur(rg[0].amt) + ' a year',
         worth: rentWorth,
         years: rentYears, need: need,
         past: pastSteps(ui('You and your family') + ' &gt; ' + ui('Rent Tax Credit')),
@@ -563,7 +650,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
         src: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/land-and-property/rent-credit/index.aspx' });
     }
 
-    if (health.length && health.indexOf('no') === -1) out.push({ id: 'health', title: 'Health expenses', short: '20% of costs',
+    if (health.length && health.indexOf('no') === -1) out.push({ id: 'health', est: 'health', title: 'Health expenses', short: '20% of costs',
       worth: 'Usually <span class="mark">20% of what you paid</span>, minus anything your insurer paid back.', years: ALL,
       need: ['Receipts for each cost (keep them for six years)', health.indexOf('dental') > -1 ? 'For dental work: a Form MED 2 filled in by your dentist' : null, 'Any health insurance refunds you received'].filter(Boolean),
       past: pastSteps(ui('Health') + ' &gt; ' + ui('Health expenses')), current: currentSteps(ui('Health') + ' &gt; ' + ui('Health expenses')),
@@ -584,8 +671,8 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       how: '<p>Revenue’s list doesn’t have a general category for care workers. It does cover <b>home helps funded by the HSE</b> (€256 a year) and <b>nursing assistants, attendants and orderlies</b> (up to €526 a year). If your job matches one of those, go back and choose it.</p><p>If your role isn’t on the list, you can’t claim the flat rate. Ask your union or your employer’s payroll team whether your grade is covered.</p>',
       src: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/documents/flat-rate-expenses.pdf' });
 
-    if (a.remote === 'yes') out.push({ id: 'remote', title: 'Remote Working Relief', short: 'Part of your bills',
-      worth: '30% of your electricity, heating and broadband bills for the days you worked from home, at your tax rate. Revenue’s example: €1,890 of bills and 50 home days gives about <span class="mono">€77</span> of relief.', years: ALL,
+    if (a.remote === 'yes') out.push({ id: 'remote', est: 'remote', title: 'Remote Working Relief', short: 'Part of your bills',
+      worth: '30% of your electricity, heating and broadband bills for the days you worked from home, at your tax rate. Revenue\u2019s example: €1,890 of bills and 50 home days takes about <span class="mono">€77</span> off your taxable income, which is roughly <span class="mono">€15</span> back at the 20% rate.', years: ALL,
       need: ['Your electricity, heating and broadband bills for the year', 'Roughly how many days you worked from home', 'Any home-working allowance your employer paid you (it’s taken off the claim)'],
       past: pastSteps(ui('Your job') + ' &gt; ' + ui('Remote Working Relief'), { prelim: true }),
       current: [SIGNIN, 'Under ' + ui('PAYE Services') + ', open the ' + ui('Receipts Tracker') + '.', 'Upload clear photos of your bills as you pay them.', 'Claim at the end of the year with your Income Tax Return.'],
@@ -593,7 +680,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 
     if (a.tuition === 'ft' || a.tuition === 'pt') {
       var dis = a.tuition === 'ft' ? '€3,000' : '€1,500';
-      out.push({ id: 'tuition', title: 'Tuition fees relief', short: '20% above ' + dis,
+      out.push({ id: 'tuition', est: 'tuition', title: 'Tuition fees relief', short: '20% above ' + dis,
         worth: '<span class="mark">20% of your fees above ' + dis + '</span>. Fees up to €7,000 per course per year count. The ' + dis + ' is taken off once per claim, even if you paid for more than one student.', years: ALL,
         need: ['Receipts or statements from the college showing what you paid', 'The college and course name (it must be on Revenue’s approved list)'],
         past: pastSteps('the tuition fees section'), current: currentSteps('the tuition fees section'),
@@ -676,12 +763,14 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
     h += '<h2 id="qtitle" tabindex="-1">' + (list.length ? 'You could have <span class="mark">' + list.length + ' thing' + (list.length === 1 ? '' : 's') + '</span> to claim' : 'Nothing obvious to claim') + '</h2>';
     h += '<p class="caveat">' + (list.length ? 'Tap one to jump to it. Each has a short "how to claim" you can open when you’re ready.' : 'None of the common credits seem to apply. Revenue has more on its site, so it’s worth a look.') + '</p></div>';
     if (list.length > 1) h += '<nav class="jump" aria-label="Your results">' + list.map(function (c) { return '<button type="button" data-jump="r-' + c.id + '"><span>' + c.title + '</span><span class="w">' + c.short + '</span></button>'; }).join('') + '</nav>';
+    if (list.length) h += '<div class="actions"><button type="button" class="btn ghost" id="copyList">Copy my checklist</button><button type="button" class="btn ghost" id="addCal">Add reminders to my calendar</button></div><p class="hint" id="actStatus" role="status"></p><div id="copyFallback"></div>';
     if (a.work === 'self' || a.work === 'both') h += '<p class="note">For income you file your own return for, claim these on your Form 11 in ROS instead of myAccount. The amounts are the same.</p>';
     if (a.work === 'none') h += '<p class="note">You only get money back for years you paid income tax. If you worked in any year since ' + OLD + ', you can still claim for that year.</p>';
     list.forEach(function (c, i) {
       h += '<article class="credit" id="r-' + c.id + '" aria-labelledby="h-' + c.id + '">';
       h += '<h3 id="h-' + c.id + '">' + c.title + '</h3><p>' + c.worth + '</p>';
       if (c.years) h += yearsChips(c.years);
+      if (c.est) h += estimatorHtml(c.est);
       h += '<details class="how"' + (i === 0 ? ' open' : '') + '><summary>How to claim</summary><div>';
       if (c.how) { h += c.how; }
       else {
@@ -699,9 +788,115 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       h += '<p class="src"><a href="' + c.src + '" target="_blank" rel="noopener">Read the full rules on Revenue.ie</a></p>';
       h += '</div></details></article>';
     });
-    h += '<p class="caveat">New to myAccount? See <a href="#how">How claiming works</a>. Spotted a mistake? <a href="#feedback">Tell us</a>.</p>';
+    h += '<p class="caveat">New to myAccount? See <a href="#how">How to claim</a>. Worried about owing tax or being checked? Read the <a href="#faq">common questions</a>. Spotted a mistake? <a href="#feedback">Tell us</a>.</p>';
+    h += '<p class="caveat">Also worth a look: <a href="#other">other money you might be missing</a>, like the Drug Payment Scheme and free dental check-ups.</p>';
     h += '<div class="nav"><button type="button" class="btn ghost" id="edit">Change my answers</button><button type="button" class="btn ghost" id="restart">Start over</button></div></div>';
     return h;
+  }
+
+  // ----- refund estimators (all worked out in the browser, nothing saved) -----
+  function num(id) { var el = document.getElementById(id); if (!el) return 0; var v = parseFloat(String(el.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function money(n) { return '€' + Math.round(n).toLocaleString('en-IE'); }
+  var EST_NOTE = '<p class="est-note">A rough guide. You can\u2019t get back more than the income tax you paid that year.</p>';
+  function field(id, label, ph) { return '<div class="field"><label for="' + id + '">' + label + '</label><input id="' + id + '" inputmode="decimal" autocomplete="off" placeholder="' + ph + '"></div>'; }
+  function estimatorHtml(kind) {
+    var body = '';
+    if (kind === 'rent') {
+      var yrs = ALL.filter(function (y) { return RENT[y]; });
+      var def = yrs.indexOf(PREV) > -1 ? PREV : yrs[yrs.length - 1];
+      body = '<div class="est-grid"><div class="field"><label for="est-rent-year">Year</label><select id="est-rent-year">' + yrs.map(function (y) { return '<option' + (y === def ? ' selected' : '') + '>' + y + '</option>'; }).join('') + '</select></div>' + field('est-rent-paid', 'Rent you paid that year (€)', 'e.g. 14400') + '</div><label class="check"><input type="checkbox" id="est-rent-couple"> We\u2019re a married couple or civil partners taxed together</label>';
+    } else if (kind === 'health') {
+      body = '<div class="est-grid">' + field('est-health-paid', 'Total you paid (€)', 'e.g. 600') + field('est-health-back', 'Paid back by your insurer (€)', 'e.g. 0') + '</div>';
+    } else if (kind === 'tuition') {
+      body = '<div class="est-grid">' + field('est-tui-fees', 'Fees paid for one academic year (€)', 'e.g. 3000') + '</div><p class="est-note">Up to €7,000 per course counts. For two students in the same year, add both fees together.</p>';
+    } else if (kind === 'remote') {
+      body = '<div class="est-grid">' + field('est-rem-bills', 'Electricity, heating and broadband for the year (€)', 'e.g. 2400') + field('est-rem-days', 'Days you worked from home', 'e.g. 120') + field('est-rem-emp', 'Paid by your employer for these (€)', 'e.g. 0') + '</div>';
+    }
+    return '<details class="est" data-est="' + kind + '"><summary>Work out my refund</summary><div class="est-body">' + body + '<p class="est-out" id="est-' + kind + '-out">Enter your figures above.</p>' + EST_NOTE + '</div></details>';
+  }
+  function updateEstimate(kind) {
+    var out = document.getElementById('est-' + kind + '-out'); if (!out) return;
+    var r = null, txt = '';
+    if (kind === 'rent') {
+      var y = parseInt(document.getElementById('est-rent-year').value, 10), paid = num('est-rent-paid');
+      var couple = document.getElementById('est-rent-couple').checked;
+      var cap = (RENT[y] || 0) * (couple ? 2 : 1);
+      if (paid > 0) { r = Math.min(paid * 0.2, cap); txt = 'About <span class="mark">' + money(r) + '</span> back for ' + y + (paid * 0.2 > cap ? ' (the most you can get that year)' : '') + '.'; }
+    } else if (kind === 'health') {
+      var net = num('est-health-paid') - num('est-health-back');
+      if (net > 0) { r = net * 0.2; txt = 'About <span class="mark">' + money(r) + '</span> back.'; }
+    } else if (kind === 'tuition') {
+      var fees = num('est-tui-fees'); var dis = state.answers.tuition === 'pt' ? 1500 : 3000;
+      if (fees > 0) { r = Math.max(0, Math.min(fees, 7000) - dis) * 0.2; txt = r > 0 ? 'About <span class="mark">' + money(r) + '</span> back.' : 'Nothing back on fees of ' + money(fees) + ', because the first ' + money(dis) + ' doesn\u2019t count.'; }
+    } else if (kind === 'remote') {
+      var bills = num('est-rem-bills'), days = num('est-rem-days'), emp = num('est-rem-emp');
+      if (bills > 0 && days > 0) {
+        var amt = Math.max(0, bills * Math.min(days, 365) / 365 - emp) * 0.3;
+        txt = 'About <span class="mark">' + money(amt * 0.2) + '</span> back at the 20% rate, or ' + money(amt * 0.4) + ' if you pay 40%.';
+      }
+    }
+    out.innerHTML = txt || 'Enter your figures above.';
+  }
+  document.getElementById('tool').addEventListener('input', function (e) { var d = e.target.closest('details.est'); if (d) updateEstimate(d.getAttribute('data-est')); });
+  document.getElementById('tool').addEventListener('change', function (e) { var d = e.target.closest('details.est'); if (d) updateEstimate(d.getAttribute('data-est')); });
+
+  // ----- copy my checklist -----
+  function plain(html) { var d = document.createElement('div'); d.innerHTML = html; return d.textContent.replace(/\s+/g, ' ').trim(); }
+  function checklistText() {
+    var list = buildResults(), lines = [];
+    lines.push('Aisíoc: my tax claim checklist');
+    lines.push('Claims for ' + OLD + ' close on 31 December ' + CUR + '.');
+    lines.push('Sign in at myAccount: ' + MYACCOUNT);
+    list.forEach(function (c, i) {
+      lines.push(''); lines.push((i + 1) + '. ' + c.title);
+      lines.push('   ' + plain(c.worth));
+      if (c.years) lines.push('   Years: ' + c.years.join(', '));
+      if (c.need) { lines.push('   You\u2019ll need:'); c.need.forEach(function (n) { lines.push('   - ' + plain(n)); }); }
+      if (c.past) { lines.push('   Past years:'); c.past.forEach(function (s, k) { lines.push('   ' + (k + 1) + ') ' + plain(s)); }); }
+      if (c.current) { lines.push('   This year (' + CUR + '):'); c.current.forEach(function (s, k) { lines.push('   ' + (k + 1) + ') ' + plain(s)); }); }
+      if (c.how) lines.push('   ' + plain(c.how));
+      lines.push('   More info: ' + c.src);
+    });
+    lines.push(''); lines.push('Made with Aisíoc: ' + siteUrl());
+    return lines.join('\n');
+  }
+  function siteUrl() { return location.origin + location.pathname; }
+  function actStatus(t) { var el = document.getElementById('actStatus'); if (el) el.textContent = t; }
+  function showCopyFallback(text) {
+    var box = document.getElementById('copyFallback'); if (!box) return;
+    box.innerHTML = '<label class="hint" for="copyText">Select all of this and copy it:</label><textarea class="copybox" id="copyText" readonly></textarea>';
+    var ta = document.getElementById('copyText'); ta.value = text; ta.focus(); ta.select();
+  }
+  function copyChecklist() {
+    var text = checklistText();
+    try {
+      navigator.clipboard.writeText(text).then(function () { actStatus('Copied. Paste it into your notes or send it to someone.'); }, function () { showCopyFallback(text); });
+    } catch (err) { showCopyFallback(text); }
+  }
+
+  // ----- calendar reminders (.ics file) -----
+  function icsDay(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
+  function icsEsc(t) { return t.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n'); }
+  function icsEvent(uid, start, summary, desc, rrule) {
+    var end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1);
+    var stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    return ['BEGIN:VEVENT', 'UID:' + uid + '@aisioc', 'DTSTAMP:' + stamp, 'DTSTART;VALUE=DATE:' + icsDay(start), 'DTEND;VALUE=DATE:' + icsDay(end)]
+      .concat(rrule ? ['RRULE:' + rrule] : [])
+      .concat(['SUMMARY:' + icsEsc(summary), 'DESCRIPTION:' + icsEsc(desc), 'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEsc(summary), 'TRIGGER:PT9H', 'END:VALARM', 'END:VEVENT']);
+  }
+  function addToCalendar() {
+    var now = new Date(), url = siteUrl(), lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Aisioc//Reminders//EN', 'CALSCALE:GREGORIAN'];
+    var dec1 = new Date(CUR, 11, 1), tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    var first = now < dec1 ? dec1 : tomorrow;
+    if (first <= new Date(CUR, 11, 31)) lines = lines.concat(icsEvent('deadline-' + OLD, first, 'Claim your ' + OLD + ' tax credits before 31 December', 'Claims for ' + OLD + ' close on 31 December ' + CUR + '. See what you can claim: ' + url, null));
+    lines = lines.concat(icsEvent('yearly-claim', new Date(CUR + 1, 0, 15), 'Claim last year\u2019s tax credits', 'Time to claim last year\u2019s tax credits in myAccount. See what you can claim: ' + url, 'FREQ=YEARLY'));
+    lines.push('END:VCALENDAR');
+    try {
+      var blob = new Blob([lines.join('\r\n')], { type: 'text/calendar' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'aisioc-reminders.ics';
+      document.body.appendChild(a); a.click(); a.remove();
+      actStatus('Downloaded. Open the file to add two reminders: one before the ' + OLD + ' deadline, and one every January.');
+    } catch (err) { actStatus('Your browser blocked the download. Try another browser.'); }
   }
 
   var tool = document.getElementById('tool');
@@ -723,6 +918,8 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       }
       return;
     }
+    if (b.id === 'copyList') { copyChecklist(); return; }
+    if (b.id === 'addCal') { addToCalendar(); return; }
     if (b.id === 'next') { clearTimeout(advanceTimer); next(); }
     else if (b.id === 'back') { clearTimeout(advanceTimer); state.step--; render(true); }
     else if (b.id === 'edit') { state.view = 'quiz'; state.step = 0; render(true); }
@@ -788,17 +985,93 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       .then(function () { btn.disabled = false; });
   });
 
+  // ----- other money (not tax) -----
+  var SITUATIONS = [
+    ['meds', 'I pay for prescription medicines most months'],
+    ['work', 'I work and pay PRSI', 'Most employees do'],
+    ['kids8', 'I have a child under 8'],
+    ['workkids', 'I work, have children, and money is tight'],
+    ['lowinc', 'My household is on a low income'],
+    ['welfare', 'I get a social welfare payment'],
+    ['carer', 'I care for someone at home'],
+    ['over66', 'I\u2019m 66 or older']
+  ];
+  var SUPPORTS = [
+    { id: 'dps', when: ['meds'], title: 'Drug Payment Scheme',
+      get: 'Your whole household pays no more than <span class="mark">€80 a month</span> for approved prescription medicines.',
+      who: 'Anyone living in Ireland who doesn\u2019t have a medical card. It covers your partner, children under 18, and children under 23 in full-time education.',
+      how: 'Apply online at mydps.ie. You\u2019ll need PPS numbers for everyone and proof of address, like a utility bill. Then give your details to your pharmacy.',
+      link: 'https://www.citizensinformation.ie/en/health/drugs-and-medicines/drugs-payment-scheme/' },
+    { id: 'treat', when: ['work'], title: 'Treatment Benefit',
+      get: 'A <span class="mark">free dental check-up</span> every year, €42 towards a scale and polish, a free eye test every two years, free basic glasses (or €42 towards frames), and hearing aids.',
+      who: 'Workers with enough PRSI contributions (how many depends on your age). A dependent spouse or partner may qualify on your record.',
+      how: 'Go to a dentist, optician or hearing aid supplier on the Department of Social Protection\u2019s panel. They check if you qualify and claim the money for you.',
+      link: 'https://www.gov.ie/treatmentbenefit' },
+    { id: 'gp', when: ['kids8', 'lowinc', 'carer', 'over66'], title: 'GP visit card',
+      get: '<span class="mark">Free GP visits</span>, including out-of-hours GP services.',
+      who: 'Every child under 8 and everyone aged 70 or over, with no means test. Carers getting Carer\u2019s Allowance or Carer\u2019s Benefit. Others on lower incomes: the limit after tax is €418 a week for a single person living alone or €607 for a couple or lone parent, with extra allowed for children, rent, childcare and travel to work.',
+      how: 'Apply online through the HSE\u2019s medical card website. Under-8s and over-70s have a short registration form.',
+      link: 'https://www.citizensinformation.ie/en/health/medical-cards-and-gp-visit-cards/gp-visit-cards/' },
+    { id: 'wfp', when: ['workkids'], title: 'Working Family Payment',
+      get: 'A weekly <span class="mark">tax-free payment</span> of 60% of the gap between your family income and the limit, at least €20 a week.',
+      who: 'Employees with at least one child who work 38 hours a fortnight (you can add your partner\u2019s hours). In 2026 the weekly income limit is €765 with one child and €866 with two, rising by €30 in 2027.',
+      how: 'Apply at MyWelfare.ie with a verified MyGovID, your bank details and your employer\u2019s registration number from your payslip.',
+      link: 'https://www.citizensinformation.ie/en/social-welfare/families-and-children/working-family-payment/' },
+    { id: 'bscfa', when: ['workkids', 'welfare'], title: 'Back to School Clothing and Footwear Allowance',
+      get: '<span class="mark">€160</span> per child aged 2 to 11 and <span class="mark">€285</span> per child aged 12 to 22 (2026 rates).',
+      who: 'Families with children who get a qualifying social welfare payment or Working Family Payment and are under the income limit (for example, €726.70 a week with one child in 2026).',
+      how: 'Many families are paid automatically in July. If you haven\u2019t heard by June, apply at MyWelfare.ie. The 2026 closing date is 30 September.',
+      link: 'https://www.citizensinformation.ie/en/social-welfare/families-and-children/back-to-school-clothing-and-footwear-allowance/' },
+    { id: 'fuel', when: ['welfare', 'over66'], title: 'Fuel Allowance',
+      get: '<span class="mark">€38 a week</span> for 28 weeks over winter (rising to €43 after Budget 2027), or two lump sums.',
+      who: 'People aged 66 or over, or under 66 on a qualifying long-term social welfare payment, who pass a means test and pay for their own heating.',
+      how: 'Apply at MyWelfare.ie, or with form NFS1 (under 66) or NFS2 (66 or over). Apply early, because it isn\u2019t backdated.',
+      link: 'https://www.citizensinformation.ie/en/social-welfare/extra-social-welfare-benefits/fuel-allowance/' },
+    { id: 'csg', when: ['carer'], title: 'Carer\u2019s Support Grant',
+      get: '<span class="mark">€2,000 a year</span> for each person you care for, paid every June. It isn\u2019t means-tested or taxed.',
+      who: 'Full-time carers aged 16 or over, even if you don\u2019t get Carer\u2019s Allowance. You must have been caring for at least six months.',
+      how: 'Paid automatically if you get Carer\u2019s Allowance, Carer\u2019s Benefit or Domiciliary Care Allowance. Otherwise, fill in form CSG1 (from an Intreo or Citizens Information centre).',
+      link: 'https://www.citizensinformation.ie/en/social-welfare/carers/carers-support-grant/' },
+    { id: 'hbp', when: ['over66', 'welfare', 'carer'], title: 'Household Benefits Package',
+      get: '<span class="mark">€1.15 a day</span> towards your electricity or gas bill, plus a free TV licence.',
+      who: 'Everyone aged 70 or over (no means test), people aged 66 to 70 on a State Pension or who pass a means test, and people under 66 on certain payments such as Carer\u2019s Allowance or Disability Allowance.',
+      how: 'Apply at MyWelfare.ie or with form HB1.',
+      link: 'https://www.citizensinformation.ie/en/social-welfare/extra-social-welfare-benefits/household-benefits-package/' }
+  ];
+  var otherSel = [];
+  function renderOther() {
+    var opts = document.getElementById('otherOpts'), res = document.getElementById('otherResults');
+    opts.innerHTML = SITUATIONS.map(function (o) {
+      return '<button type="button" class="opt" data-sit="' + o[0] + '" aria-pressed="' + (otherSel.indexOf(o[0]) > -1) + '"><span class="tick">' + CHECK + '</span><span>' + o[1] + (o[2] ? '<small>' + o[2] + '</small>' : '') + '</span></button>';
+    }).join('');
+    var matches = SUPPORTS.filter(function (s) { return s.when.some(function (w) { return otherSel.indexOf(w) > -1; }); });
+    if (!otherSel.length) { res.innerHTML = ''; return; }
+    res.innerHTML = '<div class="other-list"><h2 style="font-size:24px">' + matches.length + ' thing' + (matches.length === 1 ? '' : 's') + ' worth checking</h2>' + matches.map(function (s) {
+      return '<article class="support-card"><h3>' + s.title + '</h3><dl><div><dt>What you get</dt><dd>' + s.get + '</dd></div><div><dt>Who it\u2019s for</dt><dd>' + s.who + '</dd></div><div><dt>How to get it</dt><dd>' + s.how + '</dd></div></dl><p class="src"><a href="' + s.link + '" target="_blank" rel="noopener">Full details and conditions</a></p></article>';
+    }).join('') + '</div>';
+  }
+  document.getElementById('otherOpts').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-sit]'); if (!b) return;
+    var k = b.getAttribute('data-sit'), i = otherSel.indexOf(k);
+    if (i > -1) otherSel.splice(i, 1); else otherSel.push(k);
+    renderOther();
+    var again = document.querySelector('[data-sit="' + k + '"]'); if (again) again.focus();
+  });
+  renderOther();
+
   // pages: each menu item shows one page; the address keeps a plain #name so back/forward work
-  var VIEWS = { home: 'Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
+  var VIEWS = { home: 'Aisíoc', other: 'Other money · Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
   function showView(first) {
     var name = (location.hash || '').replace('#', '');
-    if (name === 'words') name = 'how';
+    var scrollTo = null;
+    if (name === 'words' || name === 'faq') { scrollTo = name; name = 'how'; }
     if (!VIEWS[name]) name = 'home';
     document.querySelectorAll('.view').forEach(function (v) { v.hidden = v.getAttribute('data-view') !== name; });
     document.querySelectorAll('.topnav a').forEach(function (a) {
       if (a.getAttribute('data-nav') === name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     document.title = VIEWS[name];
+    if (scrollTo) { var sec = document.getElementById(scrollTo); if (sec) { sec.scrollIntoView({ block: 'start' }); return; } }
     if (!first) {
       window.scrollTo(0, 0);
       var h = document.getElementById('h-' + name);
