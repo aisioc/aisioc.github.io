@@ -65,7 +65,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.55; }
-.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 48px); padding-block: 0 56px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 48px); padding-block: 0 104px; }
 [hidden] { display: none !important; }
 p, dd, li { max-width: 70ch; }
 /* text inside boxes fills the box */
@@ -344,7 +344,6 @@ a.tile:hover .go { text-decoration: underline; }
         <a href="#privacy" data-nav="privacy">Privacy</a>
         <a href="#feedback" data-nav="feedback">Feedback</a>
       </nav>
-      <a class="coffee" href="https://buymeacoffee.com/Kuur0" target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path><path d="M7 2v2M11 2v2M15 2v2"></path></svg>Buy me a coffee</a>
       <button type="button" class="theme-btn" id="themeBtn" aria-label="Switch to light mode"></button>
     </div>
   </header>
@@ -553,10 +552,12 @@ a.tile:hover .go { text-decoration: underline; }
       <p>I use GoatCounter to count visits. It doesn't use cookies and doesn't store your IP address. It only keeps totals, like how many people visited and which country they came from, so I can't identify you. That's also why there's no cookie banner.</p>
       <h3>Hosting</h3>
       <p>This site is hosted on GitHub Pages. GitHub logs visitors' IP addresses for security purposes. I don't see or use these logs.</p>
+      <h3>Buy me a coffee</h3>
+      <p>The coffee button in the corner is a small widget from Buy Me a Coffee, loaded from their servers. If you use it to donate, their privacy policy applies. I don't receive any of your payment details.</p>
       <h3>Feedback</h3>
       <p>If you send feedback, it goes through Formspree, a form service that emails it to me and keeps it for 30 days. I only receive what you type into the form. Please don't include your PPS number or other personal details.</p>
       <h3>Never</h3>
-      <p>No ads, no trackers, and I am not selling any data. I will never ask for your PPS number, bank details or myAccount password.</p>
+      <p>No ads, no tracking cookies of my own, and I am not selling any data. I will never ask for your PPS number, bank details or myAccount password.</p>
     </div>
   </section>
 
@@ -1259,5 +1260,6 @@ a.tile:hover .go { text-decoration: underline; }
 })();
 </script>
 
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Kuur0" data-description="Support me on Buy me a coffee!" data-message="" data-color="#E8C04A" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </body>
 </html>
