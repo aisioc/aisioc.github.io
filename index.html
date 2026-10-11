@@ -3,7 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Aisíoc: a free, private guide to the Irish tax credits you might be missing, and how to claim them yourself on Revenue's myAccount.">
+<meta name="description" content="Free and private. Answer a few quick questions and see which Irish tax credits you're missing, like the rent credit and medical expenses, and how to claim them yourself.">
+<meta name="theme-color" content="#0E161E">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Link previews (Reddit, WhatsApp, Facebook, X). If you move to aisioc.ie, change the two addresses below. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aisíoc">
+<meta property="og:title" content="Aisíoc: get the tax back you're owed">
+<meta property="og:description" content="Free and private. Answer a few quick questions and see which Irish tax credits you're missing, like the rent credit and medical expenses, and how to claim them yourself.">
+<meta property="og:url" content="https://aisioc.github.io/aisioc/">
+<meta property="og:image" content="https://aisioc.github.io/aisioc/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aisíoc. Get the tax back you're owed. Free, 2 minutes, no sign-up, nothing saved.">
+<meta property="og:locale" content="en_IE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aisíoc: get the tax back you're owed">
+<meta name="twitter:description" content="Free and private. Answer a few quick questions and see which Irish tax credits you're missing, like the rent credit and medical expenses, and how to claim them yourself.">
+<meta name="twitter:image" content="https://aisioc.github.io/aisioc/og-image.png">
 <script data-goatcounter="https://aisioc.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <title>Aisíoc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -217,11 +235,11 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
   <div class="view" data-view="home">
   <div class="hero">
     <p class="eyebrow">Aisíoc · <i>ash-ee-uk</i> · Irish for "refund"</p>
-    <h1 id="h-home" tabindex="-1">Find the tax back you're <span class="mark">owed</span>.</h1>
+    <h1 id="h-home" tabindex="-1">Get the tax back you're <span class="mark">owed</span>.</h1>
     <p class="lead">Answer a few quick questions (about 2 minutes). We'll show which tax credits you're probably missing and exactly how to claim each one yourself. No agent, no fee.</p>
     <div class="deadline" role="note">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 2"></path></svg>
-      <span>Claims for <strong>2022</strong> close on <strong>31 December 2026</strong>. <span id="daysLeft"></span></span>
+      <span>Claims for <strong class="y-old">2022</strong> close on <strong>31 December <span class="y-cur">2026</span></strong>. <span id="daysLeft"></span></span>
     </div>
     <div class="trust">
       <div>
@@ -259,11 +277,11 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       </div>
       <div class="g-step" data-n="4">
         <h3>Claim past years</h3>
-        <p>For 2022 to 2025, use <b>Review your tax for the previous 4 years</b>. Pick a year, request a <b>Statement of Liability</b> (a summary of what you earned and paid), then fill in a short <b>Income Tax Return</b> and add your credits. Do one year at a time.</p>
+        <p>For <span class="y-old">2022</span> to <span class="y-prev">2025</span>, use <b>Review your tax for the previous 4 years</b>. Pick a year, request a <b>Statement of Liability</b> (a summary of what you earned and paid), then fill in a short <b>Income Tax Return</b> and add your credits. Do one year at a time.</p>
       </div>
       <div class="g-step" data-n="5">
         <h3>Claim this year</h3>
-        <p>For 2026, use <b>Manage your tax for the current year</b>. The credit is usually applied through your wages, so you see it in your pay instead of as a lump sum.</p>
+        <p>For <span class="y-cur">2026</span>, use <b>Manage your tax for the current year</b>. The credit is usually applied through your wages, so you see it in your pay instead of as a lump sum.</p>
       </div>
       <div class="g-step" data-n="6">
         <h3>Get the refund</h3>
@@ -286,7 +304,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       <div><dt>Emergency tax</dt><dd>A higher rate of tax your employer has to use when they don't have your tax details yet, for example in a new job.</dd></div>
       <div><dt>Jointly assessed</dt><dd>Married couples and civil partners can be taxed together. Some credits double for jointly assessed couples, and unused credits can move between you.</dd></div>
       <div><dt>RTB number</dt><dd>Your landlord's registration number for the tenancy with the Residential Tenancies Board. Ask your landlord or check your lease.</dd></div>
-      <div><dt>Four-year rule</dt><dd>You can only claim refunds for the last four years. Right now that's 2022 to 2025, plus the current year.</dd></div>
+      <div><dt>Four-year rule</dt><dd>You can only claim refunds for the last four years. Right now that's <span class="y-old">2022</span> to <span class="y-prev">2025</span>, plus the current year.</dd></div>
     </dl>
   </section>
 
@@ -372,12 +390,35 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
   var FEEDBACK_URL = 'https://formspree.io/f/moejwyyr';
   var DONATE_URL = 'https://buymeacoffee.com/Kuur0';
   var MYACCOUNT = 'https://www.ros.ie/myaccount-web/sign_in.html';
+
+  // Years work themselves out from today's date: you can claim the current year plus the four before it.
+  var CUR = new Date().getFullYear(), OLD = CUR - 4, PREV = CUR - 1;
+  var ALL = [];
+  for (var yy = OLD; yy <= CUR; yy++) ALL.push(yy);
+  document.querySelectorAll('.y-old').forEach(function (e) { e.textContent = OLD; });
+  document.querySelectorAll('.y-prev').forEach(function (e) { e.textContent = PREV; });
+  document.querySelectorAll('.y-cur').forEach(function (e) { e.textContent = CUR; });
+  function yearsText(arr) { return arr.length === 1 ? '' + arr[0] : arr.length === 2 ? arr[0] + ' and ' + arr[1] : arr[0] + ' to ' + arr[arr.length - 1]; }
+  function eur(n) { return '€' + n.toLocaleString('en-IE'); }
+  // Group the claimable years that share an amount, e.g. {2022:500, 2023:500, 2024:1000} -> [{amt:1000, years:[2024]}, {amt:500, years:[2022,2023]}]
+  function groupYears(table, years) {
+    var groups = [];
+    years.forEach(function (y) {
+      var g = groups[groups.length - 1];
+      if (g && g.amt === table[y] && g.years[g.years.length - 1] === y - 1) g.years.push(y);
+      else groups.push({ amt: table[y], years: [y] });
+    });
+    return groups.sort(function (a, b) { return b.amt - a.amt; });
+  }
+  // Amounts that change by year. Update these after each Budget.
+  var RENT = { 2022: 500, 2023: 500, 2024: 1000, 2025: 1000, 2026: 1000, 2027: 1150, 2028: 1150 };
+  var MORTGAGE = { 2023: 1250, 2024: 1250, 2025: 1250, 2026: 625 };
   var CHECK = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></svg>';
   var reduceMotion = false;
   try { reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
   try {
-    var d = Math.ceil((new Date(2026, 11, 31, 23, 59, 59) - new Date()) / 86400000);
+    var d = Math.ceil((new Date(CUR, 11, 31, 23, 59, 59) - new Date()) / 86400000);
     var el = document.getElementById('daysLeft');
     if (d > 1) el.textContent = d + ' days left.'; else if (d === 1) el.textContent = 'Last day.';
   } catch (e) {}
@@ -396,12 +437,12 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 
   var QUESTIONS = [
     { id: 'work', type: 'single', q: 'How do you pay income tax?', sub: 'Pick the one that fits best for the last few years.',
-      opts: [['paye', 'Through my job', 'Tax comes out of my wages (PAYE)'], ['self', 'I’m self-employed', 'I file my own tax return'], ['both', 'Both'], ['none', 'I haven’t worked since 2022']],
+      opts: [['paye', 'Through my job', 'Tax comes out of my wages (PAYE)'], ['self', 'I’m self-employed', 'I file my own tax return'], ['both', 'Both'], ['none', 'I haven’t worked since ' + OLD]],
       help: ['If you get a payslip with tax taken off, you’re PAYE.', 'Most of these credits come back as a refund of tax you already paid. If you paid no income tax in a year, there may be nothing to get back for that year.'] },
-    { id: 'rent', type: 'multi', q: 'Since 2022, have you paid rent?', sub: 'Choose all that apply.',
+    { id: 'rent', type: 'multi', q: 'Since ' + OLD + ', have you paid rent?', sub: 'Choose all that apply.',
       opts: [['own', 'For my own home', 'A house, apartment, or a room in someone’s home'], ['child', 'For my child at college', 'Including digs'], ['no', 'No']],
       help: ['Rent counts if it was a private rental, a room in a house share, or digs.', 'It doesn’t count if HAP, RAS or Rent Supplement helped pay it, if your landlord is a housing association, or if your landlord is a relative.'] },
-    { id: 'health', type: 'multi', q: 'Since 2022, have you paid for any of these?', sub: 'For yourself or anyone else. Choose all that apply.',
+    { id: 'health', type: 'multi', q: 'Since ' + OLD + ', have you paid for any of these?', sub: 'For yourself or anyone else. Choose all that apply.',
       opts: [['gp', 'GP or consultant visits'], ['meds', 'Prescription medicines'], ['dental', 'Non-routine dental work', 'Crowns, root canals, braces, bridges'], ['physio', 'Physio, chiropody or similar', 'When a doctor referred you'], ['hosp', 'Hospital, nursing home or IVF costs'], ['no', 'None of these']],
       help: ['You can claim the part you paid yourself. If your health insurance paid some back, you claim the rest.', 'Routine dental care (check-ups, cleaning, fillings) and eye tests don’t count.'] },
     { id: 'job', type: 'single', q: 'Do you work in any of these jobs?', sub: 'Some jobs get a set yearly amount for things like uniforms and their upkeep.', skip: function (a) { return a.work === 'none'; },
@@ -410,13 +451,13 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
     { id: 'remote', type: 'single', q: 'Did you work from home on some days?', sub: 'As part of your job, not just the odd evening.', skip: function (a) { return a.work === 'none' || a.work === 'self'; },
       opts: [['yes', 'Yes'], ['no', 'No']],
       help: ['You can claim part of your electricity, heating and broadband bills for the days you worked from home.', 'Checking emails at night or weekends doesn’t count. It needs to be a proper home-working arrangement.'] },
-    { id: 'tuition', type: 'single', q: 'Since 2022, did you pay college tuition fees?', sub: 'For yourself or someone else, like your child.',
+    { id: 'tuition', type: 'single', q: 'Since ' + OLD + ', did you pay college tuition fees?', sub: 'For yourself or someone else, like your child.',
       opts: [['ft', 'Yes, for a full-time course'], ['pt', 'Yes, for a part-time course'], ['no', 'No']],
       help: ['This covers courses on Revenue’s list of approved colleges and courses. Fees you paid for someone else, like your child, count too.'] },
     { id: 'mortgage', type: 'single', q: 'Did you have a mortgage on your home at the end of 2022?', sub: 'The home you live in, not a rental property.',
       opts: [['yes', 'Yes'], ['no', 'No']],
       help: ['If your mortgage interest went up since 2022, you may be able to claim back part of the increase.'] },
-    { id: 'events', type: 'multi', q: 'Since 2022, did any of these happen?', sub: 'Choose all that apply.',
+    { id: 'events', type: 'multi', q: 'Since ' + OLD + ', did any of these happen?', sub: 'Choose all that apply.',
       opts: [['emergency', 'I was on emergency tax', 'Often in a new job, or after coming back to Ireland'], ['jobloss', 'I stopped working for 4 weeks or more'], ['pension', 'I paid into a pension or PRSA myself', 'Not taken out of my wages by my employer'], ['no', 'None of these']],
       help: ['Emergency tax shows on your payslip as a much bigger tax deduction than usual, sometimes marked “Emergency” or “E”.', 'If you stop working partway through the year, you’ve often paid too much tax for that year.'] },
     { id: 'family', type: 'multi', q: 'Do any of these describe you?', sub: 'Choose all that apply.',
@@ -481,7 +522,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 
   function yearsChips(years) {
     return '<div class="years"><span class="years-label">Years you can claim</span>' + years.map(function (y) {
-      return y === 2022 ? '<span class="chip last">2022 · closes 31 Dec</span>' : '<span class="chip">' + y + '</span>';
+      return y === OLD ? '<span class="chip last">' + OLD + ' · closes 31 Dec</span>' : '<span class="chip">' + y + '</span>';
     }).join('') + '</div>';
   }
   var SIGNIN = '<a href="' + MYACCOUNT + '" target="_blank" rel="noopener">Sign in to myAccount</a>.';
@@ -499,7 +540,6 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       'Click <span class="ui">' + (addLabel || 'Add new credits') + '</span>.', 'Go to ' + where + ', fill it in and submit.'];
   }
   function ui(t) { return '<span class="ui">' + t + '</span>'; }
-  var ALL = [2022, 2023, 2024, 2025, 2026];
 
   function buildResults() {
     var a = state.answers, out = [];
@@ -519,15 +559,21 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       extra: '<p class="caveat">Not online? Use Form P50 and send it to your Revenue office.</p>',
       src: 'https://www.revenue.ie/en/jobs-and-pensions/periods-of-unemployment/how-to-claim-a-tax-and-usc-refund-if-you-are-unemployed.aspx' });
 
-    if (rent.indexOf('own') > -1 || rent.indexOf('child') > -1) {
+    var rentYears = ALL.filter(function (y) { return RENT[y]; });
+    if ((rent.indexOf('own') > -1 || rent.indexOf('child') > -1) && rentYears.length) {
+      var rg = groupYears(RENT, rentYears);
+      var rentWorth = rg.map(function (g, i) {
+        return i === 0 ? 'Up to <span class="mark">' + eur(g.amt) + ' a year</span> for ' + yearsText(g.years) + ' (' + eur(g.amt * 2) + ' for a jointly assessed couple).'
+                       : 'Up to ' + eur(g.amt) + ' for ' + yearsText(g.years) + '.';
+      }).join(' ') + ' You get back 20% of the rent you paid, up to those limits.';
       var need = ['Your landlord’s name and the property address', 'How much rent you paid in each year', 'The RTB registration number, if you have it (you can claim without it, but Revenue may ask later)'];
       if (rent.indexOf('child') > -1) need.push('For your child: the college and course name');
-      out.push({ id: 'rent', title: 'Rent Tax Credit', short: 'Up to €1,000 a year',
-        worth: 'Up to <span class="mark">€1,000 a year</span> for 2024, 2025 and 2026 (€2,000 for a jointly assessed couple). Up to €500 for 2022 and 2023. You get back 20% of the rent you paid, up to those limits.',
-        years: ALL, need: need,
+      out.push({ id: 'rent', title: 'Rent Tax Credit', short: 'Up to ' + eur(rg[0].amt) + ' a year',
+        worth: rentWorth,
+        years: rentYears, need: need,
         past: pastSteps(ui('You and your family') + ' &gt; ' + ui('Rent Tax Credit')),
         current: currentSteps(ui('You and your family') + ' &gt; ' + ui('Rent Tax Credit')),
-        extra: (rent.indexOf('child') > -1 ? '<p class="caveat">Parents can claim for a child’s rent if the child is on an approved course, lives there to attend it, was under 23 when they started, and the landlord isn’t a relative. Digs count.</p>' : '') + '<p class="caveat">Not allowed if HAP, RAS or Rent Supplement helped pay the rent, the landlord is a housing association, or the landlord is related to you. From 2027 the credit rises to €1,150 (Budget 2027).</p>',
+        extra: (rent.indexOf('child') > -1 ? '<p class="caveat">Parents can claim for a child’s rent if the child is on an approved course, lives there to attend it, was under 23 when they started, and the landlord isn’t a relative. Digs count.</p>' : '') + '<p class="caveat">Not allowed if HAP, RAS or Rent Supplement helped pay the rent, the landlord is a housing association, or the landlord is related to you.' + (CUR < 2027 ? ' From 2027 the credit rises to €1,150 (Budget 2027).' : '') + '</p>',
         src: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/land-and-property/rent-credit/index.aspx' });
     }
 
@@ -569,10 +615,14 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
         src: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/education/tuition-fees-paid-for-third-level-education/how-do-you-calculate-the-relief.aspx' });
     }
 
-    if (a.mortgage === 'yes') out.push({ id: 'mortgage', title: 'Mortgage Interest Tax Credit', short: 'Up to €1,250 a year',
-      worth: 'Up to <span class="mark">€1,250 a year</span> for 2023, 2024 and 2025, and up to €625 for 2026. It’s based on how much more interest you paid than in 2022.', years: [2023, 2024, 2025, 2026],
+    var mYears = ALL.filter(function (y) { return MORTGAGE[y]; });
+    var mPast = mYears.filter(function (y) { return y < CUR; });
+    var mg = groupYears(MORTGAGE, mYears);
+    if (a.mortgage === 'yes' && mYears.length) out.push({ id: 'mortgage', title: 'Mortgage Interest Tax Credit', short: 'Up to ' + eur(mg[0].amt) + ' a year',
+      worth: mg.map(function (g, i) { return i === 0 ? 'Up to <span class="mark">' + eur(g.amt) + ' a year</span> for ' + yearsText(g.years) : 'up to ' + eur(g.amt) + ' for ' + yearsText(g.years); }).join(', and ') + '. It’s based on how much more interest you paid than in 2022.', years: mYears,
       need: ['Mortgage statements showing interest paid in 2022 and in each year you’re claiming', 'Your balance on 31 December 2022 had to be between €80,000 and €500,000'],
-      past: pastSteps('the Mortgage Interest Tax Credit section'), pastLabel: '2023 to 2025', current: currentSteps('the Mortgage Interest Tax Credit section'),
+      past: mPast.length ? pastSteps('the Mortgage Interest Tax Credit section') : null, pastLabel: mPast.length ? yearsText(mPast) : '',
+      current: mYears.indexOf(CUR) > -1 ? currentSteps('the Mortgage Interest Tax Credit section') : null,
       extra: '<p class="caveat">Only for the home you live in. If your interest didn’t go up, there may be nothing to claim.</p>',
       src: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/land-and-property/mortgage/index.aspx' });
 
@@ -641,7 +691,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
     h += '<p class="caveat">' + (list.length ? 'Tap one to jump to it. Each has a short "how to claim" you can open when you’re ready.' : 'None of the common credits seem to apply. Revenue has more on its site, so it’s worth a look.') + '</p></div>';
     if (list.length > 1) h += '<nav class="jump" aria-label="Your results">' + list.map(function (c) { return '<button type="button" data-jump="r-' + c.id + '"><span>' + c.title + '</span><span class="w">' + c.short + '</span></button>'; }).join('') + '</nav>';
     if (a.work === 'self' || a.work === 'both') h += '<p class="note">For income you file your own return for, claim these on your Form 11 in ROS instead of myAccount. The amounts are the same.</p>';
-    if (a.work === 'none') h += '<p class="note">You only get money back for years you paid income tax. If you worked in any year since 2022, you can still claim for that year.</p>';
+    if (a.work === 'none') h += '<p class="note">You only get money back for years you paid income tax. If you worked in any year since ' + OLD + ', you can still claim for that year.</p>';
     list.forEach(function (c, i) {
       h += '<article class="credit" id="r-' + c.id + '" aria-labelledby="h-' + c.id + '">';
       h += '<h3 id="h-' + c.id + '">' + c.title + '</h3><p>' + c.worth + '</p>';
@@ -651,10 +701,12 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
       else {
         h += '<div style="display:flex;flex-direction:column;gap:6px"><div class="sub-h">What you’ll need</div><ul class="plain">' + c.need.map(function (n) { return '<li>' + n + '</li>'; }).join('') + '</ul></div>';
         if (c.past && c.current) {
-          h += '<div class="tabs" role="tablist" aria-label="Which years"><button type="button" class="tab" role="tab" id="t' + i + 'p" aria-controls="p' + i + 'p" aria-selected="true" data-card="' + i + '" data-t="p">' + (c.pastLabel || '2022 to 2025') + '</button><button type="button" class="tab" role="tab" id="t' + i + 'c" aria-controls="p' + i + 'c" aria-selected="false" data-card="' + i + '" data-t="c">' + (c.currentLabel || 'This year (2026)') + '</button></div>';
+          h += '<div class="tabs" role="tablist" aria-label="Which years"><button type="button" class="tab" role="tab" id="t' + i + 'p" aria-controls="p' + i + 'p" aria-selected="true" data-card="' + i + '" data-t="p">' + (c.pastLabel || (OLD + ' to ' + PREV)) + '</button><button type="button" class="tab" role="tab" id="t' + i + 'c" aria-controls="p' + i + 'c" aria-selected="false" data-card="' + i + '" data-t="c">' + (c.currentLabel || ('This year (' + CUR + ')')) + '</button></div>';
           h += stepsList(c.past, 'p' + i + 'p', false, 't' + i + 'p') + stepsList(c.current, 'p' + i + 'c', true, 't' + i + 'c');
         } else if (c.past) {
           h += '<div class="sub-h">Past years</div>' + stepsList(c.past, 'p' + i + 'p', false);
+        } else if (c.current) {
+          h += '<div class="sub-h">This year (' + CUR + ')</div>' + stepsList(c.current, 'p' + i + 'c', false);
         }
         h += c.extra || '';
       }
@@ -796,7 +848,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
   // share + donate
   var status = document.getElementById('shareStatus');
   document.getElementById('shareBtn').addEventListener('click', function () {
-    var msg = 'I just found tax credits I didn’t know I could claim using Aisíoc. It takes 2 minutes, it’s free, and claims for 2022 close on 31 December: ' + location.href.split('#')[0];
+    var msg = 'I just found tax credits I didn’t know I could claim using Aisíoc. It takes 2 minutes, it’s free, and claims for ' + OLD + ' close on 31 December: ' + location.href.split('#')[0];
     try { navigator.clipboard.writeText(msg).then(function () { status.textContent = 'Copied. Paste it into a message to a friend.'; }, function () { status.textContent = msg; }); }
     catch (err) { status.textContent = msg; }
   });
