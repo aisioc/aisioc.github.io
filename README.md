@@ -44,7 +44,7 @@ Here's what's on the list:
 - **First-time buyer.** How much you can borrow and what Help to Buy and the First Home scheme could add on top. Buying a house here is hard enough without the maths.
 - **Childcare subsidy.** What the National Childcare Scheme takes off your crèche bill, so parents know before they sign up, not after.
 
-Why keep them all under the one site? Because it's easier to trust one name than a pile of random sites, and you can find everything in one place from the Tools menu. Each tool will only go live once I've checked it properly against the official sources (Revenue, the RTB, Citizens Information, the Central Bank). Until then they show up in the menu as "Soon".
+Why keep them all under the one site? Because it's easier to trust one name than a pile of random sites, and you can find everything in one place from the Tools menu. Each tool will only go live once I've checked it properly against the official sources (Revenue, the RTB, Citizens Information, the Central Bank).
 
 If there's something you think should be on the list, tell me on the feedback page.
 
