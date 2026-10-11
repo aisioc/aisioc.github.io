@@ -26,7 +26,7 @@
 <title>Aisíoc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
 /* Layout: one calm, narrow column like a form you fill in. Highlighter yellow marks money and deadlines; deep teal is for actions. */
 :root {
@@ -43,7 +43,7 @@
   --warn-bg: #FFF1D6;
   --warn-ink: #6B4200;
   --focus: #1C6FD1;
-  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 }
@@ -242,13 +242,62 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
 .coffee:hover { background: var(--marker); color: var(--marker-ink); }
 .coffee svg { color: var(--marker); }
 .coffee:hover svg { color: var(--marker-ink); }
+/* bento home: one column on phones, two on tablets, four on laptops */
+.bento { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 20px 8px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; color: var(--ink); text-decoration: none; min-width: 0; }
+a.tile { transition: border-color .15s, transform .15s; }
+a.tile:hover { border-color: var(--accent); }
+a.tile:hover .go { text-decoration: underline; }
+.tile p { max-width: none; }
+.tile-hero { gap: 26px; padding: 26px; }
+.hero-text { display: flex; flex-direction: column; gap: 16px; }
+.tile-hero h1 { font-size: clamp(38px, 9vw, 66px); font-weight: 700; letter-spacing: -1.5px; line-height: 1; outline: none; }
+.tile-hero .lead { font-size: 18px; line-height: 1.55; color: var(--muted); }
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.btn.big { min-height: 56px; padding: 0 26px; font-size: 17px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.tile-deadline { background: var(--marker); color: var(--marker-ink); border-color: transparent; }
+.tile-deadline .tile-label, .tile-deadline .tile-sub { color: var(--marker-ink); }
+.big-num { font-family: var(--font-mono); font-size: 64px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.tile-label { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: .2px; }
+.tile-strong { font-size: 17px; font-weight: 700; }
+.tile-sub { display: block; font-size: 15px; color: var(--muted); line-height: 1.45; }
+.tile-num { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 700; line-height: 1.05; color: var(--accent); margin-bottom: 4px; }
+.tile-title { font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.15; }
+.tile-icon { color: var(--accent); }
+.mini { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mini > span { background: var(--bg); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mini b { font-family: var(--font-mono); font-size: 20px; font-weight: 600; }
+.mini span span { font-size: 13px; color: var(--muted); }
+.tile-soft { background: var(--accent-soft); border-color: transparent; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 14px; background: var(--surface); }
+.tile-row { flex-direction: row; flex-wrap: wrap; align-items: center; }
+.go { color: var(--accent); font-weight: 700; white-space: nowrap; }
+@media (min-width: 640px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: row dense; }
+  .tile-hero, .tile-wide, .tile-full { grid-column: span 2; }
+}
+@media (min-width: 1000px) {
+  .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(170px, auto); padding-top: 28px; }
+  .tile-hero { grid-column: span 2; grid-row: span 2; padding: 40px; }
+  .tile-wide { grid-column: span 2; }
+  .tile-full { grid-column: span 4; }
+  .big-num { font-size: 72px; }
+}
+@media (prefers-reduced-motion: reduce) { a.tile { transition: none; } }
+.info-note { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin-top: 8px; }
+.info-note svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+.info-note div { display: flex; flex-direction: column; gap: 4px; }
+.info-note p { max-width: none; }
+/* checker page */
+.check-wrap { max-width: 860px; margin: 0 auto; padding-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+.check-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 15px; color: var(--muted); }
+.pill-warn { background: var(--warn-bg); color: var(--warn-ink); border-radius: 999px; padding: 6px 14px; font-weight: 600; }
+.check-wrap .page-h { font-size: clamp(32px, 6vw, 44px); }
+
 /* wide screens: use the space instead of one narrow column (phones keep the single column) */
 @media (min-width: 980px) {
   /* home: intro on the left stays in view, the checker on the right */
-  .view[data-view="home"]:not([hidden]) { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); column-gap: 56px; align-items: start; padding-top: 24px; }
-  .view[data-view="home"] .hero { grid-column: 1; grid-row: 1; position: sticky; top: 24px; padding-block: 24px 0; }
-  .view[data-view="home"] .tool { grid-column: 2; grid-row: 1; margin-top: 24px; }
-  .trust { grid-template-columns: minmax(0, 1fr); }
   /* how to claim: steps as a grid of cards */
   .guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border-left: 0; margin-left: 0; }
   .g-step { padding: 56px 22px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
@@ -283,7 +332,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   <header class="top">
     <a class="brand" href="#" data-nav="home">Aisíoc</a>
     <nav class="topnav" aria-label="Page sections">
-        <a href="#" data-nav="home">Check</a>
+        <a href="#check" data-nav="check">Check</a>
         <a href="#other" data-nav="other">Other money</a>
         <a href="#how" data-nav="how">How to claim</a>
     </nav>
@@ -298,28 +347,81 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   </header>
 
   <div class="view" data-view="home">
-  <div class="hero">
-    <p class="eyebrow">Aisíoc · <i>ash-ee-uk</i> · Irish for "refund"</p>
-    <h1 id="h-home" tabindex="-1">Get the tax back you're <span class="mark">owed</span>.</h1>
-    <p class="lead">Answer a few quick questions (about 2 minutes). I'll show you which tax credits you're probably missing and exactly how to claim each one yourself. No agent, no fee.</p>
-    <div class="deadline" role="note">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 2"></path></svg>
-      <span>Claims for <strong class="y-old">2022</strong> close on <strong>31 December <span class="y-cur">2026</span></strong>. <span id="daysLeft"></span></span>
-    </div>
-    <div class="trust">
-      <div>
-        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
-        <p><b>Your answers aren't saved.</b> For extra privacy, open this page in a private or incognito window.</p>
+  <div class="bento">
+    <section class="tile tile-hero">
+      <div class="hero-text">
+        <p class="eyebrow">Aisíoc · <i>ash-ee-uk</i> · Irish for "refund"</p>
+        <h1 id="h-home" tabindex="-1">Get the tax back you're <span class="mark">owed</span>.</h1>
+        <p class="lead">Nine quick questions show which tax credits you're missing, what they're worth and how to claim each one yourself. No agent, no fee.</p>
       </div>
-      <div>
-        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"></path></svg>
-        <p><b>I never ask</b> for your PPS number, bank details or myAccount password.</p>
+      <div class="hero-cta">
+        <a class="btn primary big" href="#check">Start the 2-minute check</a>
+        <span class="hint">Free · no sign-up · nothing saved</span>
       </div>
-    </div>
-    <p class="caveat home-more">New to claiming tax back? Read <a href="#how">How to claim</a> first. It explains myAccount and the words you'll see.</p>
+    </section>
+
+    <section class="tile tile-deadline" aria-label="Deadline">
+      <span class="tile-label">Deadline</span>
+      <div>
+        <div class="big-num" id="daysNum">82</div>
+        <div class="tile-strong">days left to claim <span class="y-old">2022</span></div>
+        <div class="tile-sub">Closes 31 December <span class="y-cur">2026</span></div>
+      </div>
+    </section>
+
+    <a class="tile" href="#check">
+      <span class="tile-label">Renting?</span>
+      <span><span class="tile-num">up to <span id="rentMax">€1,000</span></span><span class="tile-sub">a year back with the Rent Tax Credit</span></span>
+    </a>
+
+    <a class="tile tile-wide" href="#check">
+      <span class="tile-label">Your job could earn you a refund</span>
+      <span class="mini">
+        <span><b>€733</b><span>Nurses</span></span>
+        <span><b>€518</b><span>Teachers</span></span>
+        <span><b>€121</b><span>Shop assistants</span></span>
+      </span>
+      <span class="tile-sub">Taken off your taxable pay every year. No receipts needed.</span>
+    </a>
+
+    <a class="tile" href="#check">
+      <span class="tile-label">Doctor or dentist bills?</span>
+      <span><span class="tile-num">20% back</span><span class="tile-sub">on GP visits, prescriptions and non-routine dental</span></span>
+    </a>
+
+    <a class="tile tile-wide tile-soft" href="#other">
+      <span class="tile-label">Not tax, but still your money</span>
+      <span class="tile-title">Other money you might be missing</span>
+      <span class="chips">
+        <span>Medicines capped at €80 a month</span>
+        <span>Free dental check-up</span>
+        <span>Free GP visits for under-8s</span>
+        <span>€2,000 Carer's Support Grant</span>
+      </span>
+    </a>
+
+    <section class="tile" aria-label="Privacy">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tile-icon"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+      <p><b>Nothing is saved.</b> <span class="tile-sub">I never ask for your PPS number, bank details or password. For extra privacy, use a private window.</span></p>
+    </section>
+
+    <a class="tile tile-full tile-row" href="#how">
+      <span class="tile-title">Never claimed before? See how it works in 6 steps</span>
+      <span class="go">How to claim →</span>
+    </a>
+  </div>
   </div>
 
-  <main id="tool" class="tool" aria-live="polite"></main>
+  <div class="view" data-view="check" hidden>
+  <div class="check-wrap">
+    <h1 class="page-h" id="h-check" tabindex="-1">Your 2-minute check</h1>
+    <p class="check-meta">
+      <span class="pill-warn">Claims for <b class="y-old">2022</b> close on 31 December. <span id="daysLeft"></span></span>
+      <span>Nothing you enter is saved.</span>
+      <a href="#how">New to this? How to claim</a>
+    </p>
+    <main id="tool" class="tool" aria-live="polite"></main>
+  </div>
   </div>
 
   <div class="view" data-view="how" hidden>
@@ -428,7 +530,13 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
     <p class="caveat">Not tax, but help with everyday costs that lots of people don't know they can get. Tick anything that applies to you or your household. Nothing is saved.</p>
     <div class="options" id="otherOpts" role="group" aria-label="Your situation"></div>
     <div id="otherResults" aria-live="polite"></div>
-    <p class="fine">Figures are 2026 rates from Citizens Information and gov.ie, last checked on 11 October 2026. Not sure if you qualify? Call Citizens Information on 0818 07 4000 (Monday to Friday, 9am to 8pm). It's free.</p>
+    <div class="info-note" role="note">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+      <div>
+        <p><b>Not sure if you qualify?</b> Call Citizens Information free on <b>0818 07 4000</b>, Monday to Friday, 9am to 8pm.</p>
+        <p class="fine">Figures are 2026 rates from Citizens Information and gov.ie, last checked on 11 October 2026.</p>
+      </div>
+    </div>
   </section>
   </div>
 
@@ -484,8 +592,8 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   </div>
 
   <footer>
-    <p class="madein">Made in Ireland by someone who only recently learned how to claim their own rent tax credit.</p>
     <p class="fine">This is a free guide, not tax advice. I'm not connected to Revenue. Information comes from Revenue.ie and was last checked on 11 October 2026. Every credit has conditions I can only summarise here.</p>
+    <p class="fine">Made in Ireland by someone who didn't know how to claim extra benefits like the rent tax credit.</p>
   </footer>
 </div>
 
@@ -517,6 +625,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   // Amounts that change by year. Update these after each Budget.
   var RENT = { 2022: 500, 2023: 500, 2024: 1000, 2025: 1000, 2026: 1000, 2027: 1150, 2028: 1150 };
   var MORTGAGE = { 2023: 1250, 2024: 1250, 2025: 1250, 2026: 625 };
+  (function () { var r = document.getElementById('rentMax'); var v = RENT[CUR] || RENT[PREV]; if (r && v) r.textContent = '€' + v.toLocaleString('en-IE'); })();
   var CHECK = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></svg>';
   var reduceMotion = false;
   try { reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
@@ -525,6 +634,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
     var d = Math.ceil((new Date(CUR, 11, 31, 23, 59, 59) - new Date()) / 86400000);
     var el = document.getElementById('daysLeft');
     if (d > 1) el.textContent = d + ' days left.'; else if (d === 1) el.textContent = 'Last day.';
+    var dn = document.getElementById('daysNum'); if (dn) dn.textContent = Math.max(d, 0);
   } catch (e) {}
 
   var FRE = {
@@ -1091,7 +1201,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   renderOther();
 
   // pages: each menu item shows one page; the address keeps a plain #name so back/forward work
-  var VIEWS = { home: 'Aisíoc', other: 'Other money · Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
+  var VIEWS = { home: 'Aisíoc', check: 'Check · Aisíoc', other: 'Other money · Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
   function showView(first) {
     var name = (location.hash || '').replace('#', '');
     var scrollTo = null;
