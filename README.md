@@ -10,7 +10,7 @@ Hi all,
 
 Bit of a story. I knew about the rent tax credit but never knew how to claim it. A colleague of mine walked me through the steps. I've been renting for years, and turns out I'd been leaving money on the table. From talking to people, I'm definitely not the only one. Revenue's own figures say over 500,000 people didn't claim refunds they were due in 2024.
 
-So I built a site to help: **Aisíoc** (Irish for refund). You answer a few quick questions, takes about 2 minutes, and it tells you which tax credits you're probably missing, roughly what they're worth, and the exact steps to claim each one yourself on myAccount.
+So I built a site, with the help of AI, to help others: **Aisíoc** (Irish for refund). You answer a few quick questions, takes about 2 minutes, and it tells you which tax credits you're probably missing, roughly what they're worth, and the exact steps to claim each one yourself on myAccount.
 
 It covers stuff like:
 
