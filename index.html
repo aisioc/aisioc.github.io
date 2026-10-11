@@ -187,7 +187,8 @@ dd { margin: 4px 0 0; color: var(--muted); }
 .fb-status.err { color: var(--warn-ink); }
 
 /* footer */
-footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+footer .fine { max-width: 110ch; text-wrap: balance; }
 .support { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
 .support h2 { font-size: 22px; }
 .support-row { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -199,7 +200,7 @@ footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
 .page-h { font-size: clamp(32px, 6vw, 44px); font-weight: 800; letter-spacing: -.8px; outline: none; }
 #h-home { outline: none; }
 .view > section.block:first-child { padding-top: 36px; }
-.home-more { padding-top: 16px; }
+.home-more { padding-top: 4px; }
 .topnav a[aria-current="page"] { color: var(--ink); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .jump button { display: flex; justify-content: space-between; gap: 12px; width: 100%; padding: 12px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line); color: var(--ink); font: inherit; text-align: left; cursor: pointer; min-height: 48px; align-items: center; }
 .jump button:last-child { border-bottom: none; }
@@ -236,7 +237,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
 .other-list { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }
 .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; }
 .theme-btn:hover { border-color: var(--accent); }
-.top-end { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.top-end { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-left: auto; }
 .coffee { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1.5px solid var(--marker); color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .coffee:hover { background: var(--marker); color: var(--marker-ink); }
 .coffee svg { color: var(--marker); }
@@ -246,8 +247,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   /* home: intro on the left stays in view, the checker on the right */
   .view[data-view="home"]:not([hidden]) { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); column-gap: 56px; align-items: start; padding-top: 24px; }
   .view[data-view="home"] .hero { grid-column: 1; grid-row: 1; position: sticky; top: 24px; padding-block: 24px 0; }
-  .view[data-view="home"] .tool { grid-column: 2; grid-row: 1 / span 2; margin-top: 24px; }
-  .view[data-view="home"] .home-more { grid-column: 1; grid-row: 2; }
+  .view[data-view="home"] .tool { grid-column: 2; grid-row: 1; margin-top: 24px; }
   .trust { grid-template-columns: minmax(0, 1fr); }
   /* how to claim: steps as a grid of cards */
   .guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border-left: 0; margin-left: 0; }
@@ -286,10 +286,12 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
         <a href="#" data-nav="home">Check</a>
         <a href="#other" data-nav="other">Other money</a>
         <a href="#how" data-nav="how">How to claim</a>
-        <a href="#privacy" data-nav="privacy">Privacy</a>
-        <a href="#feedback" data-nav="feedback">Feedback</a>
     </nav>
     <div class="top-end">
+      <nav class="topnav" aria-label="About this site">
+        <a href="#privacy" data-nav="privacy">Privacy</a>
+        <a href="#feedback" data-nav="feedback">Feedback</a>
+      </nav>
       <a class="coffee" href="https://buymeacoffee.com/Kuur0" target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path><path d="M7 2v2M11 2v2M15 2v2"></path></svg>Buy me a coffee</a>
       <button type="button" class="theme-btn" id="themeBtn" aria-label="Switch to light mode"></button>
     </div>
@@ -314,10 +316,10 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
         <p><b>I never ask</b> for your PPS number, bank details or myAccount password.</p>
       </div>
     </div>
+    <p class="caveat home-more">New to claiming tax back? Read <a href="#how">How to claim</a> first. It explains myAccount and the words you'll see.</p>
   </div>
 
   <main id="tool" class="tool" aria-live="polite"></main>
-  <p class="caveat home-more">New to claiming tax back? Read <a href="#how">How to claim</a> first. It explains myAccount and the words you'll see.</p>
   </div>
 
   <div class="view" data-view="how" hidden>
@@ -482,7 +484,7 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
   </div>
 
   <footer>
-    <p class="madein">Made in Ireland by some eejit who couldn't figure out how to reclaim rent tax.</p>
+    <p class="madein">Made in Ireland by someone who only recently learned how to claim their own rent tax credit.</p>
     <p class="fine">This is a free guide, not tax advice. I'm not connected to Revenue. Information comes from Revenue.ie and was last checked on 11 October 2026. Every credit has conditions I can only summarise here.</p>
   </footer>
 </div>
