@@ -244,6 +244,42 @@ details.est summary { cursor: pointer; color: var(--accent); font-weight: 600; f
 .coffee:hover { background: var(--marker); color: var(--marker-ink); }
 .coffee svg { color: var(--marker); }
 .coffee:hover svg { color: var(--marker-ink); }
+/* tools menu */
+.top { position: relative; }
+.tools-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; margin-left: -12px; border-radius: 12px; border: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
+.tools-btn:hover { color: var(--accent); }
+.tools-btn svg { transition: transform .15s; }
+.tools-btn[aria-expanded="true"] { background: var(--accent-soft); color: var(--ink); font-weight: 700; }
+.tools-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.tools-btn.current { color: var(--ink); font-weight: 700; }
+.tools-panel { position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 50; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 24px 60px rgba(0,0,0,.35); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.tools-panel[hidden] { display: none; }
+.tool-group { display: flex; flex-direction: column; gap: 6px; }
+.tool-group-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.2px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+.tool-link { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 14px; color: var(--ink); text-decoration: none; }
+a.tool-link:hover, a.tool-link[aria-current="page"] { background: var(--accent-soft); }
+.tool-name { font-weight: 700; font-size: 17px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tool-desc { font-size: 14px; color: var(--muted); }
+.tool-link.soon { cursor: default; }
+.tool-link.soon .tool-name { color: var(--muted); }
+.soon-tag { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .6px; background: var(--warn-bg); color: var(--warn-ink); padding: 2px 7px; border-radius: 6px; }
+.tools-foot { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 14px; font-size: 15px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.menu-btn { display: none; align-items: center; gap: 6px; height: 44px; padding: 0 14px; border-radius: 12px; border: 0; background: var(--accent); color: var(--accent-ink); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; }
+.mobile-menu { flex-basis: 100%; display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+.mobile-menu[hidden] { display: none; }
+.mobile-menu .tool-link { min-height: 52px; justify-content: center; }
+.mobile-extra { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.mobile-extra a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); text-decoration: none; font-size: 17px; }
+.mobile-extra a[aria-current="page"] { color: var(--ink); font-weight: 700; }
+@media (max-width: 759px) {
+  .mainnav, .sidenav { display: none; }
+  .menu-btn { display: inline-flex; }
+  .tools-panel { display: none !important; }
+  .top-end { gap: 10px; }
+}
+@media (min-width: 760px) { .mobile-menu { display: none !important; } }
+@media (max-width: 999px) and (min-width: 760px) { .tools-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 /* bento home: one column on phones, two on tablets, four on laptops */
 .bento { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 20px 8px; }
 .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; color: var(--ink); text-decoration: none; min-width: 0; }
@@ -334,18 +370,20 @@ a.tile:hover .go { text-decoration: underline; }
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#" data-nav="home">Aisíoc</a>
-    <nav class="topnav" aria-label="Page sections">
-        <a href="#check" data-nav="check">Check</a>
-        <a href="#other" data-nav="other">Other money</a>
-        <a href="#how" data-nav="how">How to claim</a>
+    <nav class="topnav mainnav" aria-label="Main">
+      <button type="button" class="tools-btn" id="toolsBtn" aria-expanded="false" aria-controls="toolsPanel">Tools <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+      <a href="#how" data-nav="how">How to claim</a>
     </nav>
     <div class="top-end">
-      <nav class="topnav" aria-label="About this site">
+      <nav class="topnav sidenav" aria-label="About this site">
         <a href="#privacy" data-nav="privacy">Privacy</a>
         <a href="#feedback" data-nav="feedback">Feedback</a>
       </nav>
       <button type="button" class="theme-btn" id="themeBtn" aria-label="Switch to light mode"></button>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span>Menu</span></button>
     </div>
+    <div class="tools-panel" id="toolsPanel" hidden></div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Menu" hidden></nav>
   </header>
 
   <div class="view" data-view="home">
@@ -1204,6 +1242,50 @@ a.tile:hover .go { text-decoration: underline; }
   });
   renderOther();
 
+  // ----- tools menu: add a tool here and it appears in the laptop panel and the phone menu -----
+  var TOOLS = [
+    { group: 'Money back', name: 'Tax back checker', desc: 'Credits you\u2019re missing and how to claim them', href: '#check', nav: 'check', ready: true },
+    { group: 'Money back', name: 'Other money', desc: 'Help with medicines, GP visits, heating and more', href: '#other', nav: 'other', ready: true },
+    { group: 'Work and pay', name: 'Payslip checker', desc: 'Is the right tax coming out of your pay?', ready: false },
+    { group: 'Work and pay', name: 'Redundancy calculator', desc: 'Redundancy pay, notice and holidays owed', ready: false },
+    { group: 'Home and family', name: 'Renters\u2019 rights', desc: 'Rent increases and notice periods', ready: false },
+    { group: 'Home and family', name: 'First-time buyer', desc: 'What you can borrow, plus Help to Buy', ready: false },
+    { group: 'Home and family', name: 'Childcare subsidy', desc: 'What the National Childcare Scheme covers', ready: false }
+  ];
+  function toolHtml(t) {
+    var inner = '<span class="tool-name">' + t.name + (t.ready ? '' : ' <span class="soon-tag">SOON</span>') + '</span><span class="tool-desc">' + t.desc + '</span>';
+    return t.ready ? '<a class="tool-link" href="' + t.href + '" data-nav="' + t.nav + '">' + inner + '</a>' : '<span class="tool-link soon" aria-disabled="true">' + inner + '</span>';
+  }
+  function groupsHtml() {
+    var groups = [];
+    TOOLS.forEach(function (t) { if (groups.indexOf(t.group) < 0) groups.push(t.group); });
+    return groups.map(function (g) {
+      return '<div class="tool-group"><p class="tool-group-label">' + g + '</p>' + TOOLS.filter(function (t) { return t.group === g; }).map(toolHtml).join('') + '</div>';
+    }).join('');
+  }
+  var toolsBtn = document.getElementById('toolsBtn'), toolsPanel = document.getElementById('toolsPanel');
+  var menuBtn = document.getElementById('menuBtn'), mobileMenu = document.getElementById('mobileMenu');
+  toolsPanel.innerHTML = groupsHtml() + '<div class="tools-foot"><span>Every tool runs in your browser. Nothing you enter is saved.</span><a href="#how">New to claiming? How to claim \u2192</a></div>';
+  mobileMenu.innerHTML = groupsHtml() + '<div class="mobile-extra"><a href="#how" data-nav="how">How to claim</a><a href="#privacy" data-nav="privacy">Privacy</a><a href="#feedback" data-nav="feedback">Feedback</a></div>';
+  function setTools(open) { toolsPanel.hidden = !open; toolsBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  function setMenu(open) {
+    mobileMenu.hidden = !open; menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.querySelector('span').textContent = open ? 'Close' : 'Menu';
+  }
+  toolsBtn.addEventListener('click', function (e) { e.stopPropagation(); setTools(toolsPanel.hidden); });
+  menuBtn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(mobileMenu.hidden); });
+  document.addEventListener('click', function (e) {
+    if (!toolsPanel.hidden && !toolsPanel.contains(e.target)) setTools(false);
+    if (e.target.closest && e.target.closest('#mobileMenu a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (!toolsPanel.hidden) { setTools(false); toolsBtn.focus(); }
+      if (!mobileMenu.hidden) { setMenu(false); menuBtn.focus(); }
+    }
+  });
+  window.addEventListener('hashchange', function () { setTools(false); setMenu(false); });
+
   // pages: each menu item shows one page; the address keeps a plain #name so back/forward work
   var VIEWS = { home: 'Aisíoc', check: 'Check · Aisíoc', other: 'Other money · Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
   function showView(first) {
@@ -1212,7 +1294,8 @@ a.tile:hover .go { text-decoration: underline; }
     if (name === 'words' || name === 'faq') { scrollTo = name; name = 'how'; }
     if (!VIEWS[name]) name = 'home';
     document.querySelectorAll('.view').forEach(function (v) { v.hidden = v.getAttribute('data-view') !== name; });
-    document.querySelectorAll('.topnav a').forEach(function (a) {
+    toolsBtn.classList.toggle('current', TOOLS.some(function (t) { return t.ready && t.nav === name; }));
+    document.querySelectorAll('.topnav a, .tool-link[data-nav], .mobile-extra a').forEach(function (a) {
       if (a.getAttribute('data-nav') === name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     document.title = VIEWS[name];
