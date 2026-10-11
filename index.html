@@ -280,6 +280,14 @@ a.tool-link:hover, a.tool-link[aria-current="page"] { background: var(--accent-s
 @media (min-width: 760px) { .mobile-menu { display: none !important; } }
 @media (max-width: 999px) and (min-width: 760px) { .tools-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
+/* survey */
+.survey-opts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+@media (min-width: 760px) { .survey-opts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.survey-more { gap: 10px; }
+.survey-more label { font-weight: 700; }
+.survey-more textarea { min-height: 90px; }
+.tile-survey { background: var(--accent-soft); border-color: transparent; }
+
 /* bento home: one column on phones, two on tablets, four on laptops */
 .bento { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 20px 8px; }
 .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; color: var(--ink); text-decoration: none; min-width: 0; }
@@ -373,6 +381,7 @@ a.tile:hover .go { text-decoration: underline; }
     <nav class="topnav mainnav" aria-label="Main">
       <button type="button" class="tools-btn" id="toolsBtn" aria-expanded="false" aria-controls="toolsPanel">Tools <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
       <a href="#how" data-nav="how">How to claim</a>
+      <a href="#survey" data-nav="survey">Survey</a>
     </nav>
     <div class="top-end">
       <nav class="topnav sidenav" aria-label="About this site">
@@ -429,9 +438,9 @@ a.tile:hover .go { text-decoration: underline; }
       <span><span class="tile-num">20% back</span><span class="tile-sub">on GP visits, prescriptions and non-routine dental</span></span>
     </a>
 
-    <a class="tile tile-wide tile-soft" href="#other">
+    <a class="tile tile-wide tile-soft" href="#supports">
       <span class="tile-label">Not tax, but still your money</span>
-      <span class="tile-title">Other money you might be missing</span>
+      <span class="tile-title">Benefits &amp; Support you might be missing</span>
       <span class="chips">
         <span>Medicines capped at €80 a month</span>
         <span>Free dental check-up</span>
@@ -445,9 +454,14 @@ a.tile:hover .go { text-decoration: underline; }
       <p><b>Nothing is saved.</b> <span class="tile-sub">I never ask for your PPS number, bank details or password. For extra privacy, use a private window.</span></p>
     </section>
 
-    <a class="tile tile-full tile-row" href="#how">
+    <a class="tile tile-wide tile-row" href="#how">
       <span class="tile-title">Never claimed before? See how it works in 6 steps</span>
       <span class="go">How to claim →</span>
+    </a>
+
+    <a class="tile tile-wide tile-row tile-survey" href="#survey">
+      <span class="tile-title">Which free tool should come next? Have your say</span>
+      <span class="go">Take the survey →</span>
     </a>
   </div>
   </div>
@@ -566,7 +580,7 @@ a.tile:hover .go { text-decoration: underline; }
 
   <div class="view" data-view="other" hidden>
   <section class="block">
-    <h1 class="page-h" id="h-other" tabindex="-1">Other money you might be missing</h1>
+    <h1 class="page-h" id="h-other" tabindex="-1">Benefits &amp; Support you might be missing</h1>
     <p class="caveat">Not tax, but help with everyday costs that lots of people don't know they can get. Tick anything that applies to you or your household. Nothing is saved.</p>
     <div class="options" id="otherOpts" role="group" aria-label="Your situation"></div>
     <div id="otherResults" aria-live="polite"></div>
@@ -576,6 +590,23 @@ a.tile:hover .go { text-decoration: underline; }
         <p><b>Not sure if you qualify?</b> Call Citizens Information free on <b>0818 07 4000</b>, Monday to Friday, 9am to 8pm.</p>
         <p class="fine">Figures are 2026 rates from Citizens Information and gov.ie, last checked on 11 October 2026.</p>
       </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="view" data-view="survey" hidden>
+  <section class="block survey">
+    <h1 class="page-h" id="h-survey" tabindex="-1">Survey</h1>
+    <p class="caveat">I want to add more free tools to Aisíoc, and I'd rather build what you actually need. Tick any you'd use, then send your vote. It takes 10 seconds and it's anonymous.</p>
+    <div class="options survey-opts" id="surveyOpts" role="group" aria-label="Tools you would use"></div>
+    <div class="fb survey-more">
+      <label for="surveyOther">Something else you'd find useful? <span class="hint">(optional)</span></label>
+      <textarea id="surveyOther" maxlength="600" placeholder="For example: a checker for college grants, or help with a specific form."></textarea>
+      <p class="hint">Don't include your PPS number, name or other personal details.</p>
+    </div>
+    <div class="nav">
+      <button type="button" class="btn primary big" id="surveySend">Send my vote</button>
+      <p class="fb-status" id="surveyStatus" role="status"></p>
     </div>
   </section>
   </div>
@@ -592,6 +623,8 @@ a.tile:hover .go { text-decoration: underline; }
       <p>This site is hosted on GitHub Pages. GitHub logs visitors' IP addresses for security purposes. I don't see or use these logs.</p>
       <h3>Buy me a coffee</h3>
       <p>The coffee button in the corner is a small widget from Buy Me a Coffee, loaded from their servers. If you use it to donate, their privacy policy applies. I don't receive any of your payment details.</p>
+      <h3>Survey</h3>
+      <p>Survey votes are counted by GoatCounter as anonymous totals, so I only see how many people picked each tool. Your browser remembers that you've voted, so you don't vote twice by accident. Anything you type in the "something else" box goes through Formspree, like feedback.</p>
       <h3>Feedback</h3>
       <p>If you send feedback, it goes through Formspree, a form service that emails it to me and keeps it for 30 days. I only receive what you type into the form. Please don't include your PPS number or other personal details.</p>
       <h3>Never</h3>
@@ -972,7 +1005,7 @@ a.tile:hover .go { text-decoration: underline; }
       h += '</div></details></article>';
     });
     h += '<p class="caveat">New to myAccount? See <a href="#how">How to claim</a>. Worried about owing tax or being checked? Read the <a href="#faq">common questions</a>. Spotted a mistake? <a href="#feedback">Tell me</a>.</p>';
-    h += '<p class="caveat">Also worth a look: <a href="#other">other money you might be missing</a>, like the Drug Payment Scheme and free dental check-ups.</p>';
+    h += '<p class="caveat">Also worth a look: <a href="#supports">benefits and support you might be missing</a>, like the Drug Payment Scheme and free dental check-ups.</p>';
     h += '<div class="nav"><button type="button" class="btn ghost" id="edit">Change my answers</button><button type="button" class="btn ghost" id="restart">Start over</button></div></div>';
     return h;
   }
@@ -1245,12 +1278,8 @@ a.tile:hover .go { text-decoration: underline; }
   // ----- tools menu: add a tool here and it appears in the laptop panel and the phone menu -----
   var TOOLS = [
     { group: 'Money back', name: 'Tax back checker', desc: 'Credits you\u2019re missing and how to claim them', href: '#check', nav: 'check', ready: true },
-    { group: 'Money back', name: 'Other money', desc: 'Help with medicines, GP visits, heating and more', href: '#other', nav: 'other', ready: true },
-    { group: 'Work and pay', name: 'Payslip checker', desc: 'Is the right tax coming out of your pay?', ready: false },
-    { group: 'Work and pay', name: 'Redundancy calculator', desc: 'Redundancy pay, notice and holidays owed', ready: false },
-    { group: 'Home and family', name: 'Renters\u2019 rights', desc: 'Rent increases and notice periods', ready: false },
-    { group: 'Home and family', name: 'First-time buyer', desc: 'What you can borrow, plus Help to Buy', ready: false },
-    { group: 'Home and family', name: 'Childcare subsidy', desc: 'What the National Childcare Scheme covers', ready: false }
+    { group: 'Money back', name: 'Benefits & Support', desc: 'Help with medicines, GP visits, heating and more', href: '#supports', nav: 'other', ready: true },
+    { group: 'Have your say', name: 'Survey', desc: 'Vote for which free tool I build next', href: '#survey', nav: 'survey', ready: true }
   ];
   function toolHtml(t) {
     var inner = '<span class="tool-name">' + t.name + (t.ready ? '' : ' <span class="soon-tag">SOON</span>') + '</span><span class="tool-desc">' + t.desc + '</span>';
@@ -1286,12 +1315,69 @@ a.tile:hover .go { text-decoration: underline; }
   });
   window.addEventListener('hashchange', function () { setTools(false); setMenu(false); });
 
+  // ----- survey: votes are anonymous GoatCounter event counts; suggestions go through the feedback form -----
+  var SURVEY = [
+    ['payslip', 'Payslip checker', 'Is the right tax, USC and PRSI coming out of my pay?'],
+    ['redundancy', 'Redundancy calculator', 'Redundancy pay, notice and holidays owed when leaving a job'],
+    ['renters', 'Renters\u2019 rights', 'Is my rent increase legal? How much notice do I get?'],
+    ['buyer', 'First-time buyer', 'How much can I borrow, plus Help to Buy and First Home'],
+    ['childcare', 'Childcare subsidy', 'What the National Childcare Scheme takes off my cr\u00e8che bill'],
+    ['leave', 'Maternity and parental leave planner', 'Every type of leave and payment, with the key dates'],
+    ['sickleave', 'Sick pay and annual leave checker', 'How many paid sick days and holidays I\u2019m entitled to'],
+    ['moving', 'Moving to Ireland checklist', 'PPS number, MyGovID, tax and bank in the right order']
+  ];
+  var surveyPicked = [];
+  var surveyOpts = document.getElementById('surveyOpts'), surveyStatus = document.getElementById('surveyStatus');
+  function renderSurvey() {
+    surveyOpts.innerHTML = SURVEY.map(function (o) {
+      return '<button type="button" class="opt" data-sv="' + o[0] + '" aria-pressed="' + (surveyPicked.indexOf(o[0]) > -1) + '"><span class="tick">' + CHECK + '</span><span>' + o[1] + '<small>' + o[2] + '</small></span></button>';
+    }).join('');
+  }
+  surveyOpts.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-sv]'); if (!b) return;
+    var k = b.getAttribute('data-sv'), i = surveyPicked.indexOf(k);
+    if (i > -1) surveyPicked.splice(i, 1); else surveyPicked.push(k);
+    renderSurvey();
+    var again = surveyOpts.querySelector('[data-sv="' + k + '"]'); if (again) again.focus();
+  });
+  function setSurveyStatus(t, ok) { surveyStatus.textContent = t; surveyStatus.className = 'fb-status ' + (ok ? 'ok' : 'err'); }
+  var alreadyVoted = false;
+  try { alreadyVoted = localStorage.getItem('aisioc-voted') === '1'; } catch (e) {}
+  if (alreadyVoted) setSurveyStatus('You\u2019ve already voted on this device. Thanks! You can still suggest something below.', true);
+  document.getElementById('surveySend').addEventListener('click', function () {
+    var other = document.getElementById('surveyOther').value.trim();
+    if (!surveyPicked.length && !other) { setSurveyStatus('Tick at least one tool, or suggest something.', false); return; }
+    var counted = 0;
+    if (surveyPicked.length && !alreadyVoted) {
+      var gc = window.goatcounter;
+      if (gc && typeof gc.count === 'function') {
+        surveyPicked.forEach(function (k) {
+          var item = SURVEY.filter(function (o) { return o[0] === k; })[0];
+          try { gc.count({ path: 'survey-' + k, title: 'Survey: ' + item[1], event: true }); counted++; } catch (e) {}
+        });
+      }
+    }
+    var done = function () {
+      if (counted) { alreadyVoted = true; try { localStorage.setItem('aisioc-voted', '1'); } catch (e) {} }
+      surveyPicked = []; renderSurvey(); document.getElementById('surveyOther').value = '';
+      if (counted || other) setSurveyStatus('Thanks! Your vote is in.', true);
+      else if (alreadyVoted) setSurveyStatus('You\u2019ve already voted on this device. Thanks!', true);
+      else setSurveyStatus('Your vote couldn\u2019t be counted, possibly because of an ad blocker. You can tell me on the Feedback page instead.', false);
+    };
+    if (other) {
+      sendFeedback({ helped: 'survey', message: ('Survey suggestion: ' + other).slice(0, 700), picked: surveyPicked.join(', '), sentAt: new Date().toISOString() })
+        .then(done, function () { if (counted) done(); else setSurveyStatus('That didn\u2019t send. Please try again in a moment.', false); });
+    } else { done(); }
+  });
+  renderSurvey();
+
   // pages: each menu item shows one page; the address keeps a plain #name so back/forward work
-  var VIEWS = { home: 'Aisíoc', check: 'Check · Aisíoc', other: 'Other money · Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
+  var VIEWS = { home: 'Aisíoc', check: 'Check · Aisíoc', survey: 'Survey · Aisíoc', other: 'Benefits & Support · Aisíoc', how: 'How to claim · Aisíoc', privacy: 'Privacy · Aisíoc', feedback: 'Feedback · Aisíoc' };
   function showView(first) {
     var name = (location.hash || '').replace('#', '');
     var scrollTo = null;
     if (name === 'words' || name === 'faq') { scrollTo = name; name = 'how'; }
+    if (name === 'supports' || name === 'support' || name === 'benefits') name = 'other';
     if (!VIEWS[name]) name = 'home';
     document.querySelectorAll('.view').forEach(function (v) { v.hidden = v.getAttribute('data-view') !== name; });
     toolsBtn.classList.toggle('current', TOOLS.some(function (t) { return t.ready && t.nav === name; }));

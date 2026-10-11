@@ -30,7 +30,7 @@ A few things:
 - You don't need to pay someone a cut to do this for you. It's about 15 minutes per year in myAccount.
 - I'm not connected to Revenue and it's not tax advice. I've checked everything against Revenue.ie, but if you spot a mistake there's a feedback page and I'll fix it.
 
-There's also an **Other money** page for stuff that isn't tax but is still your money. Things like the Drug Payment Scheme (medicines capped at €80 a month), free dental check-ups through PRSI, GP visit cards and the Carer's Support Grant. Loads of people don't know about these either.
+There's also a **Benefits & Support** page for stuff that isn't tax but is still your money. Things like the Drug Payment Scheme (medicines capped at €80 a month), free dental check-ups through PRSI, GP visit cards and the Carer's Support Grant. Loads of people don't know about these either.
 
 ## What's coming next
 
@@ -46,6 +46,6 @@ Here's what's on the list:
 
 Why keep them all under the one site? Because it's easier to trust one name than a pile of random sites, and you can find everything in one place from the Tools menu. Each tool will only go live once I've checked it properly against the official sources (Revenue, the RTB, Citizens Information, the Central Bank).
 
-If there's something you think should be on the list, tell me on the feedback page.
+I don't want to guess which one people need most, so there's a **Survey** on the site. Tick the ones you'd use and I'll build the most popular first. It's anonymous and takes about 10 seconds. If there's something that's not on the list, there's a box in the survey to suggest it.
 
 Hope it gets a few of you some money back. Sláinte
