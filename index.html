@@ -68,6 +68,8 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-body); 
 .wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 48px); padding-block: 0 56px; }
 [hidden] { display: none !important; }
 p, dd, li { max-width: 70ch; }
+/* text inside boxes fills the box */
+.scam p, .note, .deadline span, .tool p, .tool li, .credit p, .support-card dd, .support-card p, .faq details p, .g-step p, .fb p { max-width: none; }
 h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
 p { margin: 0; }
 a { color: var(--accent); text-underline-offset: 3px; }
